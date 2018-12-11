@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "google-map-react": "^1.1.1",
     "install": "^0.12.2",
     "npm": "^6.5.0",
     "o": "^1.0.0",
