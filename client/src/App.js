@@ -3,7 +3,8 @@ import "./App.css";
 import Signup from "./Components/auth/Signup";
 import Login from "./Components/auth/Login";
 import AuthService from "./Components/auth/AuthService";
-import { Route, Link } from "react-router-dom";
+import Map from './Components/Map/Map';
+import { Route, Link, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -39,6 +40,7 @@ class App extends Component {
       <div>
         <p>Hola {this.state.user.username}</p>
         <button onClick={this.logout}>Logout</button>
+        <Map> Mapa</Map>
       </div>
     ) : (
       <div>
@@ -51,12 +53,11 @@ class App extends Component {
     return (
       <div className="App">
         {welcome}
-       
-        <Route
-          path="/signup"
-          render={() => <Signup getUser={this.getUser} />}
-        />
+       <Switch>     
+        <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
         <Route path="/login" render={() => <Login getUser={this.getUser} />} />
+        <Route exact path="/Map" component={Map}/>
+        </Switch>
       </div>
     );
   }

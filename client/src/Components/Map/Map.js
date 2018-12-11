@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import Map from './Map.css';
 
-<div class="Mapa">
-<h1>Prueba</h1>
-</div>
 
-export default Map;
+
+export default class Map extends Component {
+  render() {
+    return (
+      <div>
+       <h1>AQUI VA EL MAPA</h1>
+      
+      </div>
+    )
+  }
+}
