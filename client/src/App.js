@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import Signup from "./Components/auth/Signup";
 import Login from "./Components/auth/Login";
+import Map from "./Components/Map/Map";
 import AuthService from "./Components/auth/AuthService";
-import Map from './Components/Map/Map';
+
 import { Route, Link, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -46,18 +47,18 @@ class App extends Component {
       <div>
         <p>No user</p>
         <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
-        <Link to="/login">Login</Link>
+        <Link to="/login">Login</Link> -{" "}
+        <Link to="/Map">Map</Link>
       </div>
     );
 
     return (
       <div className="App">
         {welcome}
-       <Switch>     
+       {/* <Switch>      */}
         <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
         <Route path="/login" render={() => <Login getUser={this.getUser} />} />
-        <Route exact path="/Map" component={Map}/>
-        </Switch>
+        <Route exact path="/Map" component={Map} />
       </div>
     );
   }
