@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import map from './Map.css';
 import GoogleMapReact from 'google-map-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import Input from '../Input/Input';
 import {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -29,22 +30,24 @@ class SimpleMap extends Component {
       address: '' ,
       lat: 40.4167,
       lng: -3.70325,
-      zoom: 5
+      zoom: 13
     };
 
     this.map = (zoom) => {
-      console.log(this.state)
+      
       return(
         <GoogleMapReact
         bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
         defaultCenter={{lat:this.state.lat, lng:this.state.lng}}
         defaultZoom={this.state.zoom}
+        center={{lat:this.state.lat, lng:this.state.lng}}
+        zoom={this.state.zoom}
         >
-          {/* {this.state.lat && <AnyReactComponent
-            lat={this.state.latLng}
-            lng={this.state.latLng}
-            text={'Kreyser Avrora'}
-          />} */}
+          {this.state.lat && <AnyReactComponent
+            lat={this.state.lat}
+            lng={this.state.lng}
+            text={'esta uste aqui'}
+          />}
         </GoogleMapReact>
       )
     }
@@ -56,6 +59,8 @@ class SimpleMap extends Component {
   };
 
   handleSelect = address => {
+    
+
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => this.setState({...this.state, lat:latLng.lat, lng:latLng.lng}))
@@ -67,8 +72,17 @@ class SimpleMap extends Component {
   }
 
 
+getCoordinates =(coordinates) => {
+  this.setState({...this.state, coordinates})
+}
+  componentWillUpdate(){
+
+  }
+
+
   render() {
     const map = this.map()
+    console.log(map)
     return (
 
       // Important! Always set the container height explicitly
@@ -85,6 +99,7 @@ class SimpleMap extends Component {
     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
+            getCoordinates={this.getCoordinates} //getCoordinates
               {...getInputProps({
                 placeholder: 'Search Places ...',
                 className: 'location-search-input',
@@ -135,3 +150,4 @@ class SimpleMap extends Component {
 }
  
 export default SimpleMap;
+
