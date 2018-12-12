@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 import React, { Component } from 'react';
 import map from './Map.css';
 import GoogleMapReact from 'google-map-react';
@@ -32,13 +41,14 @@ class SimpleMap extends Component {
     zoom: 11
   };
   
+  
  
   render() {
     const map = this.map()
     console.log(this.props)
     return (
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '560px', width: '100%' }}>
       <input id="origin-input" class="controls" type="text"
     placeholder="Enter an origin location" />
 
