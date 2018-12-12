@@ -8,36 +8,47 @@ import {
   getLatLng,
 } from 'react-places-autocomplete';
  
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => <div
+style={{
+  color: 'white', 
+  background: 'grey',
+  padding: '15px 10px',
+  display: 'inline-flex',
+  textAlign: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '100%',
+  transform: 'translate(-50%, -50%)'
+}}>{text}</div>;
  
 class SimpleMap extends Component {
   constructor(props){
     super(props)
     this.props = props
-    this.state = { address: '' };
+    this.state = { 
+      address: '' ,
+      lat: 40.4167,
+      lng: -3.70325,
+      zoom: 5
+    };
+
     this.map = (zoom) => {
+      console.log(this.state)
       return(
         <GoogleMapReact
-          bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+        bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
+        defaultCenter={{lat:this.state.lat, lng:this.state.lng}}
+        defaultZoom={this.state.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
+          {/* {this.state.lat && <AnyReactComponent
+            lat={this.state.latLng}
+            lng={this.state.latLng}
             text={'Kreyser Avrora'}
-          />
+          />} */}
         </GoogleMapReact>
       )
     }
   }
-  static defaultProps = {
-    center: {
-      lat: 40.4167, 
-      lng: -3.70325
-    },
-    zoom: 11
-  };
   
  
   handleChange = address => {
@@ -47,15 +58,17 @@ class SimpleMap extends Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
+      .then(latLng => this.setState({...this.state, lat:latLng.lat, lng:latLng.lng}))
       .catch(error => console.error('Error', error));
   };
 
+  select = (e) => {
+    this.setState({...this.state, address:e})
+  }
 
 
   render() {
     const map = this.map()
-    console.log(this.props)
     return (
 
       // Important! Always set the container height explicitly
@@ -66,6 +79,8 @@ class SimpleMap extends Component {
       onChange={this.handleChange}
       onSelect={this.handleSelect}
     >
+
+
 
     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
@@ -92,10 +107,11 @@ class SimpleMap extends Component {
                       style,
                     })}
                   >
-                    <span>{suggestion.description}</span>
+                    <li onClick={e=>this.select(suggestion.description)}>{suggestion.description}</li>
                   </div>
                 );
               })}
+              
             </div>
           </div>
         )}
