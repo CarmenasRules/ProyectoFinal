@@ -8,30 +8,64 @@ import {
   geocodeByPlaceId,
   getLatLng,
 } from 'react-places-autocomplete';
- 
+
+let locationsInfo = []
+
+
+
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
- 
+
+
+
+
 class SimpleMap extends Component {
   constructor(props){
     super(props)
     this.props = props
-    this.state = { address: '' };
+    this.state = { currentPosition:{} , address: '' };
     this.map = (zoom) => {
       return(
         <GoogleMapReact
-          bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+        bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
             lat={59.955413}
             lng={30.337844}
             text={'Kreyser Avrora'}
-          />
+            />
         </GoogleMapReact>
       )
     }
+
+    this.getLocations();
   }
+
+  getLocations = ()=>{
+    fetch('../../parking.json')
+    .then(response => response.json())
+    .then(locations => {
+        console.log(locations)
+
+        locations.forEach(location => {
+            let locationData = {
+                position:{lat:location.punto.coordinates[1],lng:location.punto.coordinates[0]},
+                name:location.nombre_sede                
+            }
+            locationsInfo.push(locationData)
+        })
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition((data)=>{
+                let currentPosition = {
+                    lat: data.coords.latitude,
+                    lng: data.coords.longitude
+                }
+                SimpleMap(currentPosition)
+            })
+        }
+    })
+}
   static defaultProps = {
     center: {
       lat: 40.4167, 
@@ -41,19 +75,19 @@ class SimpleMap extends Component {
   };
   
   
- 
+  
   handleChange = address => {
     this.setState({ address });
   };
-
+  
   handleSelect = address => {
     geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng))
-      .catch(error => console.error('Error', error));
+    .then(results => getLatLng(results[0]))
+    .then(latLng => console.log('Success', latLng))
+    .catch(error => console.error('Error', error));
   };
-
-
+  
+  
 
   render() {
     const map = this.map()
