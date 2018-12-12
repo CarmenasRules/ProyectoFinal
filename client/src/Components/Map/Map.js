@@ -3,38 +3,71 @@ import React, { Component } from 'react';
 import map from './Map.css';
 import GoogleMapReact from 'google-map-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
+import Input from '../Input/Input';
 import {
   geocodeByAddress,
   geocodeByPlaceId,
   getLatLng,
 } from 'react-places-autocomplete';
 
-let locationsInfo = []
+// let locationsInfo = []
 
 
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 
 
 
+ 
+const AnyReactComponent = ({ text }) => <div
+style={{
+  color: 'white', 
+  background: 'grey',
+  padding: '15px 10px',
+  display: 'inline-flex',
+  textAlign: 'center',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: '100%',
+  transform: 'translate(-50%, -50%)'
+}}>{text}</div>;
+ 
 class SimpleMap extends Component {
   constructor(props){
     super(props)
     this.props = props
-    this.state = { currentPosition:{} , address: '' };
+    // this.state = { currentPosition:{} , address: '' };
+    this.state = { 
+      address: '' ,
+      lat: 40.4167,
+      lng: -3.70325,
+      zoom: 13
+    };
+
     this.map = (zoom) => {
+      
       return(
         <GoogleMapReact
         bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
+        // defaultCenter={this.props.center}
+        // defaultZoom={this.props.zoom}
+        // >
+        //   <AnyReactComponent
+        //     lat={59.955413}
+        //     lng={30.337844}
+        //     text={'Kreyser Avrora'}
+        //     />
+        defaultCenter={{lat:this.state.lat, lng:this.state.lng}}
+        defaultZoom={this.state.zoom}
+        center={{lat:this.state.lat, lng:this.state.lng}}
+        zoom={this.state.zoom}
         >
-          <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text={'Kreyser Avrora'}
-            />
+          {this.state.lat && <AnyReactComponent
+            lat={this.state.lat}
+            lng={this.state.lng}
+            text={'esta uste aqui'}
+          />}
         </GoogleMapReact>
       )
     }
@@ -42,30 +75,30 @@ class SimpleMap extends Component {
     this.getLocations();
   }
 
-  getLocations = ()=>{
-    fetch('../../parking.json')
-    .then(response => response.json())
-    .then(locations => {
-        console.log(locations)
+//   getLocations = ()=>{
+//     fetch('../../parking.json')
+//     .then(response => response.json())
+//     .then(locations => {
+//         console.log(locations)
 
-        locations.forEach(location => {
-            let locationData = {
-                position:{lat:location.punto.coordinates[1],lng:location.punto.coordinates[0]},
-                name:location.nombre_sede                
-            }
-            locationsInfo.push(locationData)
-        })
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition((data)=>{
-                let currentPosition = {
-                    lat: data.coords.latitude,
-                    lng: data.coords.longitude
-                }
-                SimpleMap(currentPosition)
-            })
-        }
-    })
-}
+//         locations.forEach(location => {
+//             let locationData = {
+//                 position:{lat:location.punto.coordinates[1],lng:location.punto.coordinates[0]},
+//                 name:location.nombre_sede                
+//             }
+//             locationsInfo.push(locationData)
+//         })
+//         if(navigator.geolocation){
+//             navigator.geolocation.getCurrentPosition((data)=>{
+//                 let currentPosition = {
+//                     lat: data.coords.latitude,
+//                     lng: data.coords.longitude
+//                 }
+//                 SimpleMap(currentPosition)
+//             })
+//         }
+//     })
+// }
   static defaultProps = {
     center: {
       lat: 40.4167, 
@@ -81,17 +114,30 @@ class SimpleMap extends Component {
   };
   
   handleSelect = address => {
+    
+
     geocodeByAddress(address)
-    .then(results => getLatLng(results[0]))
-    .then(latLng => console.log('Success', latLng))
-    .catch(error => console.error('Error', error));
+      .then(results => getLatLng(results[0]))
+      .then(latLng => this.setState({...this.state, lat:latLng.lat, lng:latLng.lng}))
+      .catch(error => console.error('Error', error));
   };
-  
-  
+
+  select = (e) => {
+    this.setState({...this.state, address:e})
+  }
+
+
+getCoordinates =(coordinates) => {
+  this.setState({...this.state, coordinates})
+}
+  componentWillUpdate(){
+
+  }
+
 
   render() {
     const map = this.map()
-    console.log(this.props)
+    console.log(map)
     return (
 
       // Important! Always set the container height explicitly
@@ -103,9 +149,12 @@ class SimpleMap extends Component {
       onSelect={this.handleSelect}
     >
 
+
+
     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
             <input
+            getCoordinates={this.getCoordinates} //getCoordinates
               {...getInputProps({
                 placeholder: 'Search Places ...',
                 className: 'location-search-input',
@@ -128,10 +177,11 @@ class SimpleMap extends Component {
                       style,
                     })}
                   >
-                    <span>{suggestion.description}</span>
+                    <li onClick={e=>this.select(suggestion.description)}>{suggestion.description}</li>
                   </div>
                 );
               })}
+              
             </div>
           </div>
         )}
@@ -155,3 +205,4 @@ class SimpleMap extends Component {
 }
  
 export default SimpleMap;
+
