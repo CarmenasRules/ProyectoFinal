@@ -52,14 +52,6 @@ class SimpleMap extends Component {
       return(
         <GoogleMapReact
         bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
-        // defaultCenter={this.props.center}
-        // defaultZoom={this.props.zoom}
-        // >
-        //   <AnyReactComponent
-        //     lat={59.955413}
-        //     lng={30.337844}
-        //     text={'Kreyser Avrora'}
-        //     />
         defaultCenter={{lat:this.state.lat, lng:this.state.lng}}
         defaultZoom={this.state.zoom}
         center={{lat:this.state.lat, lng:this.state.lng}}
@@ -67,11 +59,11 @@ class SimpleMap extends Component {
         onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
         yesIWantToUseGoogleMapApiInternals
         >
-          {/* {this.state.lat && <AnyReactComponent
+          {this.state.lat && <AnyReactComponent
             lat={this.state.lat}
             lng={this.state.lng}
             text={'esta uste aqui'}
-          />} */}
+          />}
         </GoogleMapReact>
       )
     }
@@ -103,9 +95,11 @@ class SimpleMap extends Component {
 
         array.forEach(arr => {
             let arrayData = {
+                relation: arr.relation,
+                address: arr.address,
                 position:{lat:arr.location.latitude,lng:arr.location.longitude},
-                name:arr.title,
-                // address: arr.street-address,
+                name: arr.title,
+                address: arr.streetaddress,
                 info: arr.organization,         
             }
             arrayInfo.push(arrayData)
@@ -122,40 +116,10 @@ class SimpleMap extends Component {
         }
     
 }
-
- initMap = (obj) =>{
-    // map = new window.google.maps.Map(document.getElementById('map'),{
-    //     zoom:13,
-    //     center:obj
-    // })
-
-    // let marker = new window.google.maps.Marker({
-    //     position:obj,
-    //     title:'Tu ubicacion'
-    // })
-    // marker.setMap(map)
-
-    // let markers = locationsInfo.map( (place) =>{
-    //     return new window.google.maps.Marker({
-    //         position: place.position,
-    //         map:map,
-    //         title:place.name
-    //     })
-    // })
-}
-  // static defaultProps = {
-  //   center: {
-  //     lat: 40.392321599999995, 
-  //     lng: -3.6985121999999997
-  //   },
-  //   zoom: 11
-  // };
-  
-  
-  
+   
   handleChange = address => {
-    console.log(address)
-    // this.setState({ address });
+    // console.log(address)
+     this.setState({ address });
     
   };
  
@@ -207,7 +171,7 @@ getCoordinates =(coordinates) => {
     return (
       
       // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '570px', width: '100%' }}>
 
        <PlacesAutocomplete
       value={this.state.address}

@@ -1,0 +1,14 @@
+/* .signup {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+} */
+.password {
+
+margin-top:5vh;
+margin-bottom: 5vh;
+}
+.Username {
+  margin-top:5vh;
+}

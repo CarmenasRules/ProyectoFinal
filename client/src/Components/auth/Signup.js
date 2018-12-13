@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
 import {Redirect} from "react-router-dom";
+import "./Signup.css";
 
 export default class Signup extends Component {
   constructor() {
@@ -9,7 +10,7 @@ export default class Signup extends Component {
     this.state = {
       username: '',
       password: '',
-      photo: '',
+      photo: '',            
       redirect: false
     }
 
@@ -46,18 +47,24 @@ export default class Signup extends Component {
     return (
       <div>
         <h2>Signup</h2>
+        <div class="signup">
         <form onSubmit={this.handleFormSubmit}>
+        <div class="Username">
           <label>Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
-
+<div class="password">
+        </div>
           <label>Password</label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
-
+</div>
+<div class="Photo">
           <label>Photo</label>
           <input type="file" name="photo" onChange={e => this.handleChange(e)} />
+</div>
 
           <input type="submit" value="Signup"/>
         </form>
+        </div>
       </div>
     )
   }
