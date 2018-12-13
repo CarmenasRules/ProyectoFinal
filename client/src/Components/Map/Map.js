@@ -11,6 +11,7 @@ import {
 } from 'react-places-autocomplete';
 import data from '../../parking.json'
 let arrayInfo = []
+let pollutionInfo = []
 
 
 
@@ -21,7 +22,26 @@ let arrayInfo = []
 
 
 
+const getpollution = ()=>{
+    fetch('https://tiles.waqi.info/tiles/{aqi}/{z}/{x}/{y}.png?token=78c5fbbab6b2531e1aa2412418bd283e637270a3')
+    .then(response => response.json())
+    .then(pollution => {
+        console.log(pollution)
+
+        pollution.forEach(location => {
+            let locationData = {
+                // position:{lat:,lng: },
+                // name:               
+            }
+            pollutionInfo.push( /* pollutionData */ )
+        })
+       
+    })
+}
  
+const renderMarkers2 =(map, maps) => {
+  
+}
 const AnyReactComponent = ({ text }) => <div
 style={{
   color: 'white', 
@@ -66,6 +86,7 @@ class SimpleMap extends Component {
         zoom={this.state.zoom}
         onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
         yesIWantToUseGoogleMapApiInternals
+
         >
           {/* {this.state.lat && <AnyReactComponent
             lat={this.state.lat}
@@ -78,6 +99,9 @@ class SimpleMap extends Component {
 
     this.getLocations();
   }
+
+  // -------- aqui-----//
+
 
   renderMarkers(map, maps, pepe) {
 
@@ -94,6 +118,12 @@ class SimpleMap extends Component {
       title: place.name
     });
   })
+  let marker2 = arrayInfo.map( (place) =>{new maps.Marker({
+    position: place.position,
+    map,
+    title: place.name
+  });
+})
   }
 
   getLocations = ()=>{
@@ -117,45 +147,15 @@ class SimpleMap extends Component {
                     lat: data.coords.latitude,
                     lng: data.coords.longitude
                 }
-                this.initMap(currentPosition)
+                // this.initMap(currentPosition)
             })
         }
     
 }
-
- initMap = (obj) =>{
-    // map = new window.google.maps.Map(document.getElementById('map'),{
-    //     zoom:13,
-    //     center:obj
-    // })
-
-    // let marker = new window.google.maps.Marker({
-    //     position:obj,
-    //     title:'Tu ubicacion'
-    // })
-    // marker.setMap(map)
-
-    // let markers = locationsInfo.map( (place) =>{
-    //     return new window.google.maps.Marker({
-    //         position: place.position,
-    //         map:map,
-    //         title:place.name
-    //     })
-    // })
-}
-  // static defaultProps = {
-  //   center: {
-  //     lat: 40.392321599999995, 
-  //     lng: -3.6985121999999997
-  //   },
-  //   zoom: 11
-  // };
-  
-  
   
   handleChange = address => {
-    console.log(address)
-    // this.setState({ address });
+    // console.log(address)
+    this.setState({ address });
     
   };
  
