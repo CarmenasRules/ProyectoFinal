@@ -7,35 +7,36 @@ import AuthService from "./Components/auth/AuthService";
 
 import { Route, Link, Switch } from "react-router-dom";
 
+
 class App extends Component {
   constructor() {
     super();
-
+    
     this.state = {
       user: null
     };
-
+    
     this.authService = new AuthService();
-
+    
     this.fetchUser();
   }
-
+  
   fetchUser = () => {
     this.authService
-      .loggedin()
-      .then(user => this.setState({ ...this.state, user }));
+    .loggedin()
+    .then(user => this.setState({ ...this.state, user }));
   };
-
+  
   getUser = user => {
     this.setState({ ...this.state, user });
   };
-
+  
   logout = () => {
     this.authService
-      .logout()
-      .then(() => this.setState({ ...this.state, user: null }));
+    .logout()
+    .then(() => this.setState({ ...this.state, user: null }));
   };
-
+  
   render() {
     const welcome = this.state.user ? (
       <div>
@@ -51,7 +52,7 @@ class App extends Component {
         <Link to="/Map">Map</Link>
       </div>
     );
-
+    
     return (
       <div className="App">
         {welcome}
@@ -65,4 +66,5 @@ class App extends Component {
 }
 
 export default App;
+  
 
