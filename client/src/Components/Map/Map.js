@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import map from './Map.css';
 import GoogleMapReact from 'google-map-react';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import Input from '../Input/Input';
+
 import {
   geocodeByAddress,
   geocodeByPlaceId,
