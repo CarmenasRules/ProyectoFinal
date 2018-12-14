@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import map from "./Map.css";
+import axios from "axios"
 import autocompleteEnd from "./autocompleteEnd";
 import GoogleMapReact from "google-map-react";
 import data from "../../parking.json";
@@ -16,8 +17,8 @@ const AnyReactComponent = ({ text }) => (
   <div
     style={{
       color: "white",
-      background: "grey",
-      padding: "15px 10px",
+      background: "blue",
+      padding: "10px 10px",
       display: "inline-flex",
       textAlign: "center",
       alignItems: "center",
@@ -29,6 +30,8 @@ const AnyReactComponent = ({ text }) => (
     {text}
   </div>
 );
+
+
 
 class SimpleMap extends Component {
   constructor(props) {
@@ -84,40 +87,29 @@ class SimpleMap extends Component {
     };
   }
 
-  //   updateCoorstart = (coorstart) => {
-  //     this.setState({...this.state, coorstart})
-  // }
-  //   updateCoorend = (coorsend) => {
-  //   this.setState({...this.state, coorsend})
-  // }
 
-  getpollution = () => {
-    fetch(
-      "https://tiles.waqi.info/tiles/{aqi}/{z}/{x}/{y}.png?token=78c5fbbab6b2531e1aa2412418bd283e637270a3"
-    )
-      .then(response => response.json())
-      .then(pollution => {
-        console.log(pollution);
+  getPollution = (city)=>{
+    return axios.get(`http://api.waqi.info/feed/${city}/?token=78c5fbbab6b2531e1aa2412418bd283e637270a3`)
+    .then(pollutions => {
+            let pollutionPoint = {
+                position:{lat:pollutions.data.data.city.geo[0],lng: pollutions.data.data.city.geo[1]},
+                name: pollutions.data.data.iaqi.no2.v         
+            }
+            pollutionInfo.push(pollutionPoint)
+        })
+  }
 
-        pollution.forEach(location => {
-          let locationData = {
-            // position:{lat:,lng: },
-            // name:
-          };
-          pollutionInfo.push(/* pollutionData */);
-        });
-      });
-  };
 
+  
   renderMarkers(map, maps) {
-    let marker = arrayInfo.map(place => {
+    let markerParkings = arrayInfo.map(place => {
       new maps.Marker({
         position: place.position,
         map,
         title: place.name
       });
     });
-    let marker2 = arrayInfo.map(place => {
+    let markerPollution = pollutionInfo.map(place => {
       new maps.Marker({
         position: place.position,
         map,
@@ -141,7 +133,6 @@ class SimpleMap extends Component {
       };
       arrayInfo.push(arrayData);
     });
-    console.log(arrayInfo);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(data => {
         let currentPosition = {
@@ -170,7 +161,11 @@ class SimpleMap extends Component {
   };
 
   render() {
+    const locations = [
+      "madrid", "barcelona", "algeciras"
+    ]
     window.addEventListener("load", this.getLocations);
+    window.addEventListener("load", locations.forEach(location => this.getPollution(location)))
 
     const map = this.map();
 
