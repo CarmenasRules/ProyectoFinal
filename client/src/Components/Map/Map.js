@@ -1,280 +1,206 @@
-
-import React, { Component } from 'react';
-import map from './Map.css';
-import GoogleMapReact from 'google-map-react';
-import PlacesAutocomplete from 'react-places-autocomplete';
-// import Input from '../Input/Input';
+import React, { Component } from "react";
+import map from "./Map.css";
+import autocompleteEnd from "./autocompleteEnd";
+import GoogleMapReact from "google-map-react";
+import data from "../../parking.json";
+import AutocompleteStart from "./autocompleteStart";
 import {
   geocodeByAddress,
   geocodeByPlaceId,
-  getLatLng,
-} from 'react-places-autocomplete';
-import data from '../../parking.json'
-let arrayInfo = []
+  getLatLng
+} from "react-places-autocomplete";
+let arrayInfo = [];
+let pollutionInfo = [];
 
+const AnyReactComponent = ({ text }) => (
+  <div
+    style={{
+      color: "white",
+      background: "grey",
+      padding: "15px 10px",
+      display: "inline-flex",
+      textAlign: "center",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: "100%",
+      transform: "translate(-50%, -50%)"
+    }}
+  >
+    {text}
+  </div>
+);
 
-
-
-
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-
-
-
- 
-const AnyReactComponent = ({ text }) => <div
-style={{
-  color: 'white', 
-  background: 'grey',
-  padding: '15px 10px',
-  display: 'inline-flex',
-  textAlign: 'center',
-  alignItems: 'center',
-  justifyContent: 'center',
-  borderRadius: '100%',
-  transform: 'translate(-50%, -50%)'
-}}>{text}</div>;
- 
 class SimpleMap extends Component {
-  constructor(props){
-    super(props)
-    this.props = props
+  constructor(props) {
+    super(props);
+    this.props = props;
     // this.state = { currentPosition:{} , address: '' };
-    this.state = { 
-      address: '' ,
+    this.state = {
+      address: "",
       lat: 40.392321599999995,
-      lng:-3.6985121999999997,
+      lng: -3.6985121999999997,
       zoom: 13
     };
 
-    this.map = (zoom) => {
-      
-      return(
-        <GoogleMapReact
-        bootstrapURLKeys={{ key:"AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
-        defaultCenter={{lat:this.state.lat, lng:this.state.lng}}
-        defaultZoom={this.state.zoom}
-        center={{lat:this.state.lat, lng:this.state.lng}}
-        zoom={this.state.zoom}
-        onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
-        yesIWantToUseGoogleMapApiInternals
-        >
-          {this.state.lat && <AnyReactComponent
-            lat={this.state.lat}
-            lng={this.state.lng}
-            text={'esta uste aqui'}
-          />}
-        </GoogleMapReact>
-      )
-    }
-
-    this.getLocations();
-  }
-
-  renderMarkers(map, maps, pepe) {
-
-    // locationsInfo.push({
-    //   position:{
-    //     lat: 40.426687899755734,
-    //     lng: -3.6996173701222492
-    //   },
-    //   name: "Pepe",
-    // })
-    let marker = arrayInfo.map( (place) =>{new maps.Marker({
-      position: place.position,
-      map,
-      title: place.name
-    });
-  })
-  }
-
-  getLocations = ()=>{
-    let array = data["@graph"]
-    // .then(response => response.json())
-    
-
-        array.forEach(arr => {
-            let arrayData = {
-                relation: arr.relation,
-                address: arr.address,
-                position:{lat:arr.location.latitude,lng:arr.location.longitude},
-                name: arr.title,
-                address: arr.streetaddress,
-                info: arr.organization,         
-            }
-            arrayInfo.push(arrayData)
-        })
-        console.log(arrayInfo)
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition((data)=>{
-                let currentPosition = {
-                    lat: data.coords.latitude,
-                    lng: data.coords.longitude
-                }
-                this.initMap(currentPosition)
-            })
+    this.map = (zoom, lat, lng) => {
+      let DirectionsService = new window.google.maps.DirectionsService();
+      DirectionsService.route(
+        {
+          origin: new window.google.maps.LatLng(lat, lng),
+          destination: new window.google.maps.LatLng(lat, lng),
+          travelmode: window.google.maps.TravelMode.DRIVING
+        },
+        (result, status) => {
+          if (status === window.google.maps.DirectionsStatus.OK) {
+            this.setState({
+              direction: result
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
         }
-    
-}
-   
-  handleChange = address => {
-    // console.log(address)
-     this.setState({ address });
-    
-  };
- 
-  handleSelect = address => {
-    
+      );
 
+      return (
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: "AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw" }}
+          defaultCenter={{ lat: this.state.lat, lng: this.state.lng }}
+          defaultZoom={this.state.zoom}
+          center={{ lat: this.state.lat, lng: this.state.lng }}
+          zoom={this.state.zoom}
+          onGoogleApiLoaded={({ map, maps }) => this.renderMarkers(map, maps)}
+          yesIWantToUseGoogleMapApiInternals
+        >
+          {this.state.lat && (
+            <AnyReactComponent
+              lat={this.state.lat}
+              lng={this.state.lng}
+              text={"esta uste aqui"}
+            />
+          )}
+        </GoogleMapReact>
+      );
+      this.getLocations();
+    };
+  }
+
+  //   updateCoorstart = (coorstart) => {
+  //     this.setState({...this.state, coorstart})
+  // }
+  //   updateCoorend = (coorsend) => {
+  //   this.setState({...this.state, coorsend})
+  // }
+
+  getpollution = () => {
+    fetch(
+      "https://tiles.waqi.info/tiles/{aqi}/{z}/{x}/{y}.png?token=78c5fbbab6b2531e1aa2412418bd283e637270a3"
+    )
+      .then(response => response.json())
+      .then(pollution => {
+        console.log(pollution);
+
+        pollution.forEach(location => {
+          let locationData = {
+            // position:{lat:,lng: },
+            // name:
+          };
+          pollutionInfo.push(/* pollutionData */);
+        });
+      });
+  };
+
+  renderMarkers(map, maps) {
+    let marker = arrayInfo.map(place => {
+      new maps.Marker({
+        position: place.position,
+        map,
+        title: place.name
+      });
+    });
+    let marker2 = arrayInfo.map(place => {
+      new maps.Marker({
+        position: place.position,
+        map,
+        title: place.name
+      });
+    });
+  }
+
+  getLocations = () => {
+    let array = data["@graph"];
+    // .then(response => response.json())
+
+    array.forEach(arr => {
+      let arrayData = {
+        relation: arr.relation,
+        address: arr.address,
+        position: { lat: arr.location.latitude, lng: arr.location.longitude },
+        name: arr.title,
+        address: arr.streetaddress,
+        info: arr.organization
+      };
+      arrayInfo.push(arrayData);
+    });
+    console.log(arrayInfo);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(data => {
+        let currentPosition = {
+          lat: data.coords.latitude,
+          lng: data.coords.longitude
+        };
+        // this.initMap(currentPosition)
+      });
+    }
+  };
+
+  updateCoordinates = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => this.setState({...this.state, lat:latLng.lat, lng:latLng.lng}))
-      .catch(error => console.error('Error', error));
+      .then(latLng =>
+        this.setState({ ...this.state, lat: latLng.lat, lng: latLng.lng })
+      )
+      .catch(error => console.error(`Error`, error));
   };
-  handleSelect = address2 => {
-    
 
-    geocodeByAddress(address2)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => this.setState({...this.state, lat:latLng.lat, lng:latLng.lng}))
-      .catch(error => console.error('Error', error));
+  getCoordinates = coordinates => {
+    this.setState({ ...this.state, coordinates });
   };
-  
-
-  select = (e) => {
-    this.setState({...this.state, address:e})
-  }
-  select = (e2) => {
-    this.setState({...this.state, address2:e2})
-  }
-
-getCoordinates =(coordinates) => {
-  this.setState({...this.state, coordinates})
-}
-  componentWillUpdate(){
-
-  }
-  getCoordinates =(coordinates2) => {
-    this.setState({...this.state, coordinates2})
-  }
-    componentWillUpdate(){
-  
-  }
-
-
+  getCoordinates = coordinates2 => {
+    this.setState({ ...this.state, coordinates2 });
+  };
 
   render() {
-    window.addEventListener('load',this.getLocations)
-    
-    const map = this.map()
-    
+    window.addEventListener("load", this.getLocations);
+
+    const map = this.map();
+
     return (
-      
       // Important! Always set the container height explicitly
-      <div style={{ height: '570px', width: '100%' }}>
+      <div style={{ height: "570px", width: "100%" }}>
+        <div>
+          <AutocompleteStart updateCoordinates={this.updateCoordinates} />
+          <autocompleteEnd update={this.updateCoorend} />
+        </div>
 
-       <PlacesAutocomplete
-      value={this.state.address}
-      onChange={e => this.handleChange(e)}
-      onSelect={this.handleSelect}
-      >
+        <div id="mode-selector" class="controls">
+          <input
+            type="radio"
+            name="type"
+            id="changemode-walking"
+            checked="checked"
+          />
+          <label for="changemode-walking">Walking</label>
 
+          <input type="radio" name="type" id="changemode-transit" />
+          <label for="changemode-transit">Transit</label>
 
-
-    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-      <div>
-            <input
-            getCoordinates={this.getCoordinates} //getCoordinates
-            {...getInputProps({
-              placeholder: 'Search Places ...',
-              className: 'location-search-input',
-            })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                ? 'suggestion-item--active'
-                : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                  {...getSuggestionItemProps(suggestion, {
-                    className,
-                    style,
-                  })}
-                  >
-                    <li onClick={e=>this.select(suggestion.description)}>{suggestion.description}</li>
-                  </div>
-                );
-              })}
-              
-            </div>
-          </div>
-        )}
-    </PlacesAutocomplete>
-    <PlacesAutocomplete
-      value={this.state.address2}
-      onChange={this.handleChange2}
-      onSelect={this.handleSelect2}
-      >
-
-
-
-    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-      <div>
-            <input
-            getCoordinates={this.getCoordinates2} //getCoordinates
-            {...getInputProps({
-              placeholder: 'Search Places ...',
-              className: 'location-search-input',
-            })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                ? 'suggestion-item--active'
-                : 'suggestion-item';
-                // inline style for demonstration purpose
-                const style = suggestion.active
-                ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                  {...getSuggestionItemProps(suggestion, {
-                    className,
-                    style,
-                  })}
-                  >
-                    <li onClick={e=>this.select(suggestion.description)}>{suggestion.description}</li>
-                  </div>
-                );
-              })}
-              
-            </div>
-          </div>
-        )}
-    </PlacesAutocomplete>
-     
-
-<div id="mode-selector" class="controls">
-  <input type="radio" name="type" id="changemode-walking" checked="checked" />
-  <label for="changemode-walking">Walking</label>
-
-  <input type="radio" name="type" id="changemode-transit"/>
-  <label for="changemode-transit">Transit</label>
-
-  <input type="radio" name="type" id="changemode-driving"/>
-  <label for="changemode-driving">Driving</label>
-</div>
+          <input type="radio" name="type" id="changemode-driving" />
+          <label for="changemode-driving">Driving</label>
+        </div>
         {map}
       </div>
     );
   }
 }
-export default SimpleMap;
 
+export default SimpleMap;
