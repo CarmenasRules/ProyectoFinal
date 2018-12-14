@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import map from "./Map.css";
-import axios from "axios"
+import axios from "axios";
 import autocompleteEnd from "./autocompleteEnd";
 import GoogleMapReact from "google-map-react";
 import data from "../../parking.json";
@@ -30,8 +30,6 @@ const AnyReactComponent = ({ text }) => (
     {text}
   </div>
 );
-
-
 
 class SimpleMap extends Component {
   constructor(props) {
@@ -87,24 +85,29 @@ class SimpleMap extends Component {
     };
   }
 
+  getPollution = city => {
+    return axios
+      .get(
+        `http://api.waqi.info/feed/${city}/?token=78c5fbbab6b2531e1aa2412418bd283e637270a3`
+      )
+      .then(pollutions => {
+        let pollutionPoint = {
+          position: {
+            lat: pollutions.data.data.city.geo[0],
+            lng: pollutions.data.data.city.geo[1]
+          },
+          name: pollutions.data.data.iaqi.no2.v
+        };
+        pollutionInfo.push(pollutionPoint);
+      });
+  };
 
-  getPollution = (city)=>{
-    return axios.get(`http://api.waqi.info/feed/${city}/?token=78c5fbbab6b2531e1aa2412418bd283e637270a3`)
-    .then(pollutions => {
-            let pollutionPoint = {
-                position:{lat:pollutions.data.data.city.geo[0],lng: pollutions.data.data.city.geo[1]},
-                name: pollutions.data.data.iaqi.no2.v         
-            }
-            pollutionInfo.push(pollutionPoint)
-        })
-  }
-
-
-  
   renderMarkers(map, maps) {
     let markerParkings = arrayInfo.map(place => {
       new maps.Marker({
         position: place.position,
+        animation: window.google.maps.Animation.DROP,
+        icon:"./img/iconParking.png",
         map,
         title: place.name
       });
@@ -113,7 +116,8 @@ class SimpleMap extends Component {
       new maps.Marker({
         position: place.position,
         map,
-        title: place.name
+        title: place.name,
+        animation: window.google.maps.Animation.DROP,
       });
     });
   }
@@ -161,11 +165,12 @@ class SimpleMap extends Component {
   };
 
   render() {
-    const locations = [
-      "madrid", "barcelona", "algeciras"
-    ]
+    const locations = ["madrid", "barcelona", "algeciras"];
     window.addEventListener("load", this.getLocations);
-    window.addEventListener("load", locations.forEach(location => this.getPollution(location)))
+    window.addEventListener(
+      "load",
+      locations.forEach(location => this.getPollution(location))
+    );
 
     const map = this.map();
 
