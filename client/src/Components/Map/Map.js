@@ -15,8 +15,6 @@ let pollutionInfo = []
 
 
 
-
-
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 
@@ -29,7 +27,7 @@ const getpollution = ()=>{
         console.log(pollution)
 
         pollution.forEach(location => {
-            let locationData = {
+            let pollutionPoint = {
                 // position:{lat:,lng: },
                 // name:               
             }
