@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import map from './Map.css';
 import GoogleMapReact from 'google-map-react';
@@ -20,22 +19,7 @@ let pollutionInfo = []
 
 
 
-const getpollution = ()=>{
-    fetch('https://tiles.waqi.info/tiles/{aqi}/{z}/{x}/{y}.png?token=78c5fbbab6b2531e1aa2412418bd283e637270a3')
-    .then(response => response.json())
-    .then(pollution => {
-        console.log(pollution)
 
-        pollution.forEach(location => {
-            let pollutionPoint = {
-                // position:{lat:,lng: },
-                // name:               
-            }
-            pollutionInfo.push( /* pollutionData */ )
-        })
-       
-    })
-}
  
 const renderMarkers2 =(map, maps) => {
   
@@ -53,6 +37,13 @@ style={{
   transform: 'translate(-50%, -50%)'
 }}>{text}</div>;
  
+
+
+
+
+
+
+
 class SimpleMap extends Component {
   constructor(props){
     super(props)
@@ -99,6 +90,24 @@ class SimpleMap extends Component {
   }
 
   // -------- aqui-----//
+
+
+  getPollution = ()=>{
+    fetch('https://tiles.waqi.info/tiles/{aqi}/{z}/{x}/{y}.png?token=78c5fbbab6b2531e1aa2412418bd283e637270a3')
+    .then(response => response.json())
+    .then(pollutions => {
+        console.log(pollutions)
+
+        pollutions.forEach(pollutionLocation => {
+            let pollutionPoint = {
+                position:{lat:pollutionLocation.city.geo[0],lng:pollutionLocation.city.geo[1]},
+                name: pollutionLocation.city.name           
+            }
+            pollutionInfo.push(pollutionPoint)
+        })
+       
+    })
+}
 
 
   renderMarkers(map, maps, pepe) {
