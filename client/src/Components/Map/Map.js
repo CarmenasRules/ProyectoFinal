@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import map from "./Map.css";
 import axios from "axios";
-import autocompleteEnd from "./autocompleteEnd";
+import AutocompleteEnd from "./autocompleteEnd";
+import AutocompleteStart from "./autocompleteStart";
 import GoogleMapReact from "google-map-react";
 import data from "../../parking.json";
-import AutocompleteStart from "./autocompleteStart";
 import {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -91,6 +91,7 @@ class SimpleMap extends Component {
         `http://api.waqi.info/feed/${city}/?token=78c5fbbab6b2531e1aa2412418bd283e637270a3`
       )
       .then(pollutions => {
+        console.log(pollutions.data.data)
         let pollutionPoint = {
           position: {
             lat: pollutions.data.data.city.geo[0],
@@ -101,6 +102,17 @@ class SimpleMap extends Component {
         pollutionInfo.push(pollutionPoint);
       });
   };
+
+
+//   let PollutionLevel = {
+//     50: green,
+//    150: orange,
+//    200: red
+//   }
+
+// getPollutionNumber (){
+//   if pollutions.data.data.iaqi.no2.v
+// }
 
   renderMarkers(map, maps) {
     let markerParkings = arrayInfo.map(place => {
@@ -116,6 +128,7 @@ class SimpleMap extends Component {
       new maps.Marker({
         position: place.position,
         map,
+        // icon: (polution) => polution>50? {red: green},
         title: place.name,
         animation: window.google.maps.Animation.DROP,
       });
@@ -132,7 +145,7 @@ class SimpleMap extends Component {
         address: arr.address,
         position: { lat: arr.location.latitude, lng: arr.location.longitude },
         name: arr.title,
-        address: arr.streetaddress,
+        // address: arr.streetaddress,
         info: arr.organization
       };
       arrayInfo.push(arrayData);
@@ -179,7 +192,7 @@ class SimpleMap extends Component {
       <div style={{ height: "570px", width: "100%" }}>
         <div>
           <AutocompleteStart updateCoordinates={this.updateCoordinates} />
-          <autocompleteEnd update={this.updateCoorend} />
+          <AutocompleteEnd updateCoordinates={this.updateCoordinates} />
         </div>
 
         <div id="mode-selector" class="controls">

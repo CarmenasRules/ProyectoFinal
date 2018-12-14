@@ -7,7 +7,7 @@ import {
 } from 'react-places-autocomplete';
 
 
-export default class AutocompleteEnd extends Component {
+export default class AutocompleteStart extends Component {
   constructor(props) {
     super(props)
   
@@ -24,10 +24,14 @@ export default class AutocompleteEnd extends Component {
   };
   
   handleSelect = address => {
-    geocodeByAddress(address)
-      .then(results => getLatLng(results[0]))
-      .then(latLng => {this.props.update(latLng); console.log('Success', latLng)})
-      .catch(error => console.error('Error', error));
+    this.setState({...this.state, address}, ()=>{
+      this.props.updateCoordinates(address)
+    })
+    //   geocodeByAddress(address)
+    //     .then(results => getLatLng(results[0]))
+    //     .then(latLng => { console.log('Success', latLng)})
+    //     .catch(error => console.error('Error', error));
+    // })
   };
 
   render() {
@@ -63,7 +67,7 @@ export default class AutocompleteEnd extends Component {
                   style,
                 })}
                 >
-                  <li onClick={this.select(suggestion.description)}>{suggestion.description}</li>
+                  <li onClick={()=>this.handleSelect(suggestion.description)}>{suggestion.description}</li>
                 </div>
               );
             })}
