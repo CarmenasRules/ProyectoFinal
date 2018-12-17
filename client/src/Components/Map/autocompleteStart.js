@@ -14,8 +14,7 @@ export default class AutocompleteStart extends Component {
     this.state = { address: ''};
        
     }
-  
-  a
+
   
   handleChange = address => {
     this.setState({ address },() => {

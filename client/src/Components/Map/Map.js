@@ -10,13 +10,11 @@ import {
 import React, { Component } from "react";
 
 
-
-
 const MapWithADirectionsRenderer = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `590px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
@@ -46,6 +44,10 @@ const MapWithADirectionsRenderer = compose(
   <GoogleMap
     defaultZoom={7}
     defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
+
+
+
+    
    
   >
     {props.directions && <DirectionsRenderer directions={props.directions} />}
@@ -53,15 +55,5 @@ const MapWithADirectionsRenderer = compose(
 );
 
 
-
-export default class Map extends Component {
-  render() {
- 
-    return (
-      <div>
-        <MapWithADirectionsRenderer />
-      </div>
-    );
-  }
- }
+export default MapWithADirectionsRenderer
 

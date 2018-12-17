@@ -16,11 +16,8 @@
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
     "react-google-map-draw-filter": "^1.2.2",
-<<<<<<< HEAD
-    "react-lazy-hero": "^2.0.0",
-=======
     "react-google-maps": "^9.4.5",
->>>>>>> 196772190802e657a9ba3295bc5725dfd21df87b
+    "react-lazy-hero": "^2.0.0",
     "react-native": "^0.57.7",
     "react-native-maps": "^0.22.1",
     "react-native-maps-directions": "^1.6.0",
@@ -29,12 +26,9 @@
     "react-places-autocomplete": "^7.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
-<<<<<<< HEAD
     "reactstrap": "^6.5.0",
+    "recompose": "^0.30.0",
     "styled-components": "^4.1.2"
-=======
-    "recompose": "^0.30.0"
->>>>>>> 196772190802e657a9ba3295bc5725dfd21df87b
   },
   "scripts": {
     "start": "react-scripts start",
