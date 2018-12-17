@@ -1,0 +1,67 @@
+ /* eslint-disable no-undef */
+// /* global google */
+import { compose, withProps, lifecycle }  from "recompose";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  DirectionsRenderer,
+} from "react-google-maps";
+import React, { Component } from "react";
+
+
+
+
+const MapWithADirectionsRenderer = compose(
+  withProps({
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `400px` }} />,
+    mapElement: <div style={{ height: `100%` }} />,
+  }),
+  withScriptjs,
+  withGoogleMap,
+  lifecycle({
+    componentDidMount() {
+      const DirectionsService = new window.google.maps.DirectionsService();
+
+      DirectionsService.route({
+        origin: new window.google.maps.LatLng(40.375645, -3.697076), 
+        destination: new window.google.maps.LatLng(40.406964, -3.672410),
+        travelMode: google.maps.TravelMode.DRIVING,
+
+        // waypoints:
+      }, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          this.setState({
+            directions: result,
+          });
+        } else {
+          console.error(`error fetching directions ${result}`);
+        }
+      });
+    }
+  })
+)(props =>
+  <GoogleMap
+    defaultZoom={7}
+    defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
+   
+  >
+    {props.directions && <DirectionsRenderer directions={props.directions} />}
+  </GoogleMap>
+);
+
+
+
+export default class Map extends Component {
+  render() {
+ 
+    return (
+      <div>
+        <MapWithADirectionsRenderer />
+      </div>
+    );
+  }
+ }
+
