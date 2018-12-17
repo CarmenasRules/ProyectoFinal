@@ -1,0 +1,33 @@
+.fotocoche {
+ margin-top: 50px;
+}
+.titulo{
+margin-top: 300px;
+  color: white;
+}
+.infogeneral {
+display: flex;
+  flex-direction: row; 
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+.informationp {
+  margin-right: 4rem;
+  margin-left: 2rem;
+  margin-top: 3.5rem
+}
+.quienesomos {
+  display: flex;
+  justify-content: flex-start;
+}
+.buttonmasinfo {
+  display:flex;
+  justify-content: flex-start;
+  width: 7rem;
+  height: 3rem;
+  border-radius: 20%;
+}
+.servicios {
+margin-left: -7rem;
+  margin-top: 5rem;
+}
