@@ -40,5 +40,5 @@ font-size: 1.5rem;
 }
 .toolbar_navigation-items a:hover,
 .toolbar_navigation-items a:active {
-  color: red;
+  color: gray;
 }
