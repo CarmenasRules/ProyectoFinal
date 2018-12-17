@@ -1,62 +1,22 @@
-// import React from 'react';
-// import LazyHero from 'react-lazy-hero';
-// import { homedir } from 'os';
-
-// const Home = () => {
-//     return (
-//         <div>
-//             <LazyHero img="./677982-madrid-city-wallpapers-1920x1080-screen.jpg">
-//                 <h1>Generic Startup Hype Headline</h1>
-//             </LazyHero>
-
-//             {/* ... */}
-//         </div>
-//     );
-// }
-// export default Home;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React from 'react';
-import { Parallax, Background } from 'react-parallax';
-import logo from '../../img/electricar2.jpg'; 
- 
+import React, { Component } from 'react';
 import './Home.css'
-const Home = () => (
-    <div>
-        {/* -----dynamic blur-----*/}
-        <Parallax
-            blur={0}
-            bgImage={require('../../img/madrid-background-hd-1440x900-479579.jpg')}
-            bgImageAlt="the dog"
-            strength={-200}
-        >
-
-        <div className="titulo">
-            <h1>Pierde el miedo a moverte por <b>Madrid!</b></h1>
-            <h2 className="h2">Piensa como Carmena, sé como Carmena</h2>
-            {/* <select>
-                <option value="red" style={{backgroundImage:"url(https://www.elcomercio.com/files/article_main/uploads/2017/05/12/5916775bc3359.jpeg)"}}>PEPE</option>
-            </select> */}
-            </div>
-            <div style={{ width:"100%" ,height: '300px' }} />
-        </Parallax>
-        <div className="infogeneral">
-        <div style={{ margin: "1.2rem 0 0 0.5rem"}} >
+import logo from '../../img/electricar2.jpg'; 
+import iconoposicion from '../../img/positionicon.png'; 
+import iconoruta from '../../img/route2icon.png'; 
+import iconocontaminacion from '../../img/pollutionicon.png'; 
+import cochelogo from '../../img/caricon.png'
+export default class Home extends Component {
+    render() {
+        return (
+            <div>
+        <div class="backgroundimg">
+        <div class="textbackground">
+        <h1>Pierde el miedo a moverte por Madrid!</h1>
+        <h2>Piensa como Carmena, sé como Carmena.</h2>
+        </div>
+        </div>
+       <div className="infogeneral">
+        <div style={{ margin: "1.5rem 0 0 1.5rem"}} >
         <img  src={logo} style={{width: "35rem" , height:"20rem"}} />
     </div>
     <div class="informationp">
@@ -69,39 +29,38 @@ const Home = () => (
     <div class="servicios">
     <h1>Nuestros servicios</h1>
     </div>
+    <div class="iconos">
+    <img class="icono1"  src={iconoposicion} style={{width: "10rem" , height:"10rem"}} />
+    <img class="icono2" src={iconoruta} style={{width: "10rem" , height:"10rem"}} />
+    <img class="icono3"src={cochelogo} style={{width: "10rem" , height:"10rem"}} />
+    <img class="icono4" src={iconocontaminacion} style={{width: "10rem" , height:"10rem"}} />
     </div>
-);
-export default Home;
+    <div class="texto">
+    <div>
+    <h1>Ubicaciones</h1>
+    <p>Utilizamos las ubicaciones de Google Maps para ofrecerte una mejor experiencia.</p>
+    </div>
+    <div>
+    <h1>Rutas</h1>
+    <p>Rutas simples e intuitivas, para viajar teniendo en cuenta las prohibiciones por contaminación.</p>
+    </div>
+    <div>
+    <h1>Elige tu medio de transporte</h1>
+    <p>Puedes elegir entre ir en coche, a pie o en transporte público.</p>
+    </div>
+    <div>
+    <h1>Contaminación</h1>
+    <p>Ayuda a reducir la contaminación y ya de paso, ¡ahórrate una multa!.</p>
+    </div>
+    </div>
+    </div>
+    );
+  }
+}
+
+
+       
 
 
 
 
-// import React, {Component, Fragment} from "react";
-// import Scene from "react-parallax-3d";
-
-// export default class Parallax extends Component {
-//     state = { scene: 0 };
-
-//     render() {
-//         const scene = this.state.scene;
-
-//         return (
-//             <Fragment>
-//                 <Scene
-//                     ID={0}
-//                     scene={scene}
-//                     img="../../img/677982-madrid-city-wallpapers-1920x1080-screen.jpg"
-//                     title="Madrid"
-//                     subTitle="Rules"
-//                 />
-//                 <Scene
-//                     ID={1}
-//                     scene={scene}
-//                     img="../../img/88_City Tour of Madrid.jpg"
-//                     title="SVG"
-//                     subTitle="REAL HOT"
-//                 />
-//             </Fragment>
-//         );
-//     }
-// }

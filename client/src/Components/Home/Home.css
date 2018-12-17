@@ -31,3 +31,46 @@ display: flex;
 margin-left: -7rem;
   margin-top: 5rem;
 }
+.backgroundimg {
+  background-image: url("../../img/fotodefondo.jpg");
+  background-attachment: fixed;
+  /* overflow: scroll; */
+  height: 45rem;
+  width: 90rem;
+  min-width: 50rem;
+}
+.textbackground {
+  height: 1000px;
+  width: 1000px;
+  color: white;
+  /* margin-left: -20rem; */
+  
+}
+.iconos {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+.icono1 {
+
+}
+.icono2 {
+margin-left: 2rem;
+}
+.icono3 {
+
+}
+.icono4 {
+
+}
+.texto {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+}
+.h3 {
+  width: 100px;
+  height: 100px;
+}
