@@ -114,6 +114,7 @@ export default class Map extends Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
 

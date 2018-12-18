@@ -121,20 +121,22 @@ const coords = [
 
 
 
-
-
-const MapWithADirectionsRenderer = compose(
-  withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `590px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withScriptjs,
-  withGoogleMap,
-  lifecycle({
-    componentWillReceiveProps() {
-      debugger
+    
+    const MapWithADirectionsRenderer = compose(
+      withProps({
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `590px` }} />,
+        mapElement: <div style={{ height: `100%` }} />,
+      }),
+      withScriptjs,
+      withGoogleMap,
+      lifecycle({
+        componentWillReceiveProps() {
+          
+          // console.log("------------------------------------------")
+        
+        
       if (this.props.journeyOrigin && this.props.journeyDestination) {
         const DirectionsService = new window.google.maps.DirectionsService();
 
@@ -154,9 +156,6 @@ const MapWithADirectionsRenderer = compose(
           }
         });
       }
-    },
-    componentDidMount() {
-      
     }
   })
 )(props =>
