@@ -23,7 +23,7 @@ authRoutes.post("/login", function(req, res, next) {
 
 
 authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, password, pictureUrl, email, coche, CERO, ECO, C, B, } = req.body;  // COMO AÑADO CHECKBOX??
   const pictureUrl = req.file.url;
 
   
@@ -44,7 +44,13 @@ authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass,
-      pictureUrl
+      pictureUrl,
+      email,
+      coche,
+      CERO,
+      ECO,    //
+      C,
+      B,
     });
 
     newUser.save((err, user) => {

@@ -42,14 +42,17 @@ class App extends Component {
             <div>
               <p>Hola {this.state.user.username}</p>
               <button onClick={this.logout}>Logout</button>
-              <MapPage> Mapa</MapPage>
+              <MapPage>Mapa</MapPage>
+             
             </div>
           ) : (
             <div>
               <p>No user</p>
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
-              <Link to="/Map">Map</Link>
+              <Link to="/Map">Map</Link> -{" "}
+              <Link to="/Protocolo">Protocolos</Link>
+              
 
             </div>
           );
@@ -63,6 +66,7 @@ class App extends Component {
                 <Route path="/login" render={() => <Login getUser={this.getUser} />} />
                 <Route exact path="/Map" component={MapPage} />
                 <Route exact path="/" component={Home} />
+                <Route exact path="/Protocolo" component={Protocolo} />
                 </Switch>
               </div>
               

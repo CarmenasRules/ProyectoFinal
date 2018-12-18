@@ -11,7 +11,7 @@ import {
   Polygon
 } from "react-google-maps";
 import React, { Component } from "react";
-
+import data from "../../parking.json";
 
 
 const coords = [
@@ -39,6 +39,9 @@ const coords = [
 
 
 
+
+
+
 const MapWithADirectionsRenderer = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
@@ -53,8 +56,8 @@ const MapWithADirectionsRenderer = compose(
       const DirectionsService = new window.google.maps.DirectionsService();
 
       DirectionsService.route({
-        origin: new window.google.maps.LatLng(40.375645, -3.697076), 
-        destination: new window.google.maps.LatLng(40.406964, -3.672410),
+        origin: new window.google.maps.LatLng(40.375645, -3.697076), //PASAR POR PROPS LA INFO props.center.start
+        destination: new window.google.maps.LatLng(40.406964, -3.672410), //PASAR POR PROPS LA INFO
         travelMode: google.maps.TravelMode.DRIVING,
 
         // waypoints:
@@ -71,15 +74,17 @@ const MapWithADirectionsRenderer = compose(
   })
 )(props =>
   <GoogleMap
-    defaultZoom={7}
-    defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
-
-
-
-    
-   
+  defaultZoom={7}
+  defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
+  center={new google.maps.LatLng(props.center)}
+  
+  
+  
+  
   >
+  {console.log(props.center.lat)}
    {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}
+    {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} icon="./img/iconParking.png"/>)}
         <Polygon
             path={reversedCoords}
             //key={1}
