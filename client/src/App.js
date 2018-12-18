@@ -12,6 +12,7 @@ import Toolbar from './Components/Toolbar/Toolbar';
 import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
 import MapPage from './Components/Map/MapPage';
+import MadridCentral from './Components/MadridCentral/MadridCentral';
 
 
 
@@ -49,7 +50,8 @@ class App extends Component {
               <p>No user</p>
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
-              <Link to="/Map">Map</Link>
+              <Link to="/Map">Map</Link> -{" "}
+              <Link to="/MadridCentral">Madrid Central</Link>
 
             </div>
           );
@@ -63,6 +65,7 @@ class App extends Component {
                 <Route path="/login" render={() => <Login getUser={this.getUser} />} />
                 <Route exact path="/Map" component={MapPage} />
                 <Route exact path="/" component={Home} />
+                <Route exact path="/MadridCentral" component={MadridCentral} />
                 </Switch>
               </div>
               

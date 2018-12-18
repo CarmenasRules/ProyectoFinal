@@ -1,5 +1,6 @@
-.fotocoche {
- margin-top: 50px;
+
+
+.fotitocoche {
 }
 .titulo{
 margin-top: 300px;
@@ -9,8 +10,9 @@ margin-top: 300px;
 display: flex;
   flex-direction: row; 
   margin-left: 1rem;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
+
 .informationp {
   margin-right: 4rem;
   margin-left: 2rem;
@@ -28,8 +30,8 @@ display: flex;
   border-radius: 20%;
 }
 .servicios {
-margin-left: -7rem;
-  margin-top: 5rem;
+margin-left: -4rem;
+  margin-top: 10rem;
 }
 .backgroundimg {
   background-image: url("../../img/fotodefondo.jpg");
@@ -52,6 +54,7 @@ margin-left: -7rem;
   justify-content: space-around;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
+  margin-top: 5rem;
 }
 .icono1 {
 

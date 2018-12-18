@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-
+import './login.css'
+import logo from '../../img/electricar2.jpg'
 export default class Login extends Component {
   constructor() {
     super();
@@ -30,12 +31,14 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div class="login">
+      {/* <img src={logo} /> */}
         <h2>Login</h2>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Username</label>
+          <label class="username">Username</label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
-
+<br></br>
+<br></br>
           <label>Password</label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 

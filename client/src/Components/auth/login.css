@@ -1,0 +1,17 @@
+.login {
+color: white;
+ border: 1px solid rgb(177, 177, 177); 
+ background-color: #184f88;
+ width: 500px;
+ height: 300px;
+ margin-left: 480px;
+ margin-top: 150px;
+}
+
+h2 {
+  margin-top: 50px;
+}
+
+.username {
+  margin-top: 100px;
+}

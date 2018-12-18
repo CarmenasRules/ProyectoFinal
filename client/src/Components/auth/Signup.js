@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 import {Redirect} from "react-router-dom";
 import "./Signup.css";
-import Checkbox from './Checkbox';
-const items = [
-  'One',
-  'Two',
-  'Three',
-];
+// import Checkbox from './Checkbox';
+// const items = [
+//   'One',
+//   'Two',
+//   'Three',
+// ];
 
 export default class Signup extends Component {
   constructor() {
@@ -22,37 +22,37 @@ export default class Signup extends Component {
 
     this.authService = new AuthService();
   }
-  componentWillMount = () => {
-    this.selectedCheckboxes = new Set();
-  }
+  // componentWillMount = () => {
+  //   this.selectedCheckboxes = new Set();
+  // }
 
-  toggleCheckbox = label => {
-    if (this.selectedCheckboxes.has(label)) {
-      this.selectedCheckboxes.delete(label);
-    } else {
-      this.selectedCheckboxes.add(label);
-    }
-  }
+  // toggleCheckbox = label => {
+  //   if (this.selectedCheckboxes.has(label)) {
+  //     this.selectedCheckboxes.delete(label);
+  //   } else {
+  //     this.selectedCheckboxes.add(label);
+  //   }
+  // }
 
-  handleFormSubmit = formSubmitEvent => {
-    formSubmitEvent.preventDefault();
+  // handleFormSubmit = formSubmitEvent => {
+  //   formSubmitEvent.preventDefault();
 
-    for (const checkbox of this.selectedCheckboxes) {
-      console.log(checkbox, 'is selected.');
-    }
-  }
+  //   for (const checkbox of this.selectedCheckboxes) {
+  //     console.log(checkbox, 'is selected.');
+  //   }
+  // }
 
-  createCheckbox = label => (
-    <Checkbox
-            label={label}
-            handleCheckboxChange={this.toggleCheckbox}
-            key={label}
-        />
-  )
+  // createCheckbox = label => (
+  //   <Checkbox
+  //           label={label}
+  //           handleCheckboxChange={this.toggleCheckbox}
+  //           key={label}
+  //       />
+  // )
 
-  createCheckboxes = () => (
-    items.map(this.createCheckbox)
-  )
+  // createCheckboxes = () => (
+  //   items.map(this.createCheckbox)
+  // )
 
   handleFormSubmit = (e) => {
     e.preventDefault();
@@ -94,21 +94,21 @@ export default class Signup extends Component {
           <label>Password</label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 </div>
-<div class="pegatina">
+{/* <div class="pegatina">
 <div className="container">
       <div className="row">
-        <div className="col-sm-12">
+        <div className="col-sm-12"> */}
 
-          <form onSubmit={this.handleFormSubmit}>
-            {this.createCheckboxes()}
+          {/* <form onSubmit={this.handleFormSubmit}> */}
+            {/* {this.createCheckboxes()} */}
 
-            <button className="btn btn-default" type="submit">Save</button>
-          </form>
-
+            {/* <button className="btn btn-default" type="submit">Save</button> */}
+          {/* </form> */}
+{/* 
         </div>
       </div>
-    </div>
-</div>
+    </div> */}
+{/* </div> */}
 <div class="Photo">
           <label>Photo</label>
           <input type="file" name="photo" onChange={e => this.handleChange(e)} />

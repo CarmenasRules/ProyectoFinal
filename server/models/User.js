@@ -5,7 +5,13 @@ const userSchema = new Schema({
   username: String,
   email: String,
   password: String,
-  pictureUrl: String
+  // modelo: String,
+  // matrícula: String,
+  // distintivoCeroEmisiones: Boolean,
+  // distintivoECO: Boolean,
+  // distintivoB: Boolean, 
+  // distintivoC: Boolean,
+  pictureUrl: String,
 }, {
   timestamps: {
     createdAt: 'created_at',

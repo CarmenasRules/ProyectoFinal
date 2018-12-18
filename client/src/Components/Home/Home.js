@@ -16,8 +16,8 @@ export default class Home extends Component {
         </div>
         </div>
        <div className="infogeneral">
-        <div style={{ margin: "1.5rem 0 0 1.5rem"}} >
-        <img  src={logo} style={{width: "35rem" , height:"20rem"}} />
+        <div style={{ margin: "1.5rem 0 0 2.5rem"}} >
+        <img  class="fotitocoche" src={logo} style={{width: "37rem" , height:"20rem"}} />
     </div>
     <div class="informationp">
         <h1 class="quienesomos">¿Quiénes somos?</h1>
