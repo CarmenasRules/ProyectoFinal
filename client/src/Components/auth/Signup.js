@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AuthService from './AuthService';
 import {Redirect} from "react-router-dom";
 import "./Signup.css";
-// import Checkbox from './Checkbox';
+import Checkbox from './Checkbox';
 // const items = [
 //   'One',
 //   'Two',
@@ -16,7 +16,10 @@ export default class Signup extends Component {
     this.state = {
       username: '',
       password: '',
-      photo: '',            
+      photo: '', 
+      email: '',   
+      coche: '',
+      // CHECKBOXES??   
       redirect: false
     }
 
@@ -57,12 +60,15 @@ export default class Signup extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const {username, password, photo} = this.state;
+    let checkboxClicked = document.getElementsByClassName("cero")[0].checked
+    console.log(checkboxClicked)
 
-    this.authService.signup({username, password, photo})
+    const {username, password, photo, coche, email} = this.state;  // como meto aquí  checkbox??¿¿??
+
+    this.authService.signup({username, password, photo, coche, email}) // como meto aquí  checkbox??¿¿??
     .then(user => {
       this.props.getUser(user)
-      this.setState({username: '', password: '', photo: '', redirect: true})
+      this.setState({username: '', password: '', photo: '', coche: '', email: '', redirect: true}) //checkbox aqui?
     });
   }
 
@@ -77,42 +83,82 @@ export default class Signup extends Component {
   }
 
   render() {
+    
     if(this.state && this.state.redirect) {
       return <Redirect to="/" />
     }
 
     return (
       <div>
-        <h2>Signup</h2>
+        <h1>Signup</h1>
         <div class="signup">
         <form onSubmit={this.handleFormSubmit}>
-        <div class="Username">
-          <label>Username</label>
-          <input type="text" name="username" onChange={e => this.handleChange(e)} />
-<div class="password">
-        </div>
-          <label>Password</label>
-          <input type="password" name="password" onChange={e => this.handleChange(e)} />
-</div>
-{/* <div class="pegatina">
-<div className="container">
-      <div className="row">
-        <div className="col-sm-12"> */}
+          
+          <h2>Usuario</h2>
+          <div class="Username">
+            <label>Nombre y apellido  </label>
+            <input  type="text" name="username" onChange={e => this.handleChange(e)} />
+          </div>  
 
-          {/* <form onSubmit={this.handleFormSubmit}> */}
-            {/* {this.createCheckboxes()} */}
+          <div class="password">
+            <label>Contraseña  </label>
+            <input type="password" name="password" onChange={e => this.handleChange(e)} />
+          </div>
 
-            {/* <button className="btn btn-default" type="submit">Save</button> */}
-          {/* </form> */}
-{/* 
-        </div>
-      </div>
-    </div> */}
-{/* </div> */}
-<div class="Photo">
-          <label>Photo</label>
+          <div class="password">
+            <label>Email  </label>
+            <input type="email" name="email" onChange={e => this.handleChange(e)} />
+          </div>
+
+          <div class="Photo">
+          <label>Foto de perfil   </label>
           <input type="file" name="photo" onChange={e => this.handleChange(e)} />
-</div>
+        </div>
+
+
+
+          <h2>Coche</h2>
+          <div class="coche">
+            <label>Coche  </label>
+            <input type="text" name="coche" onChange={e => this.handleChange(e)} />
+          </div>
+
+
+          <div> 
+            <h2>Distintivo ambiental</h2>
+            <label>CERO</label> 
+            <input className="cero" type="checkbox" name="cero" value="Cero" onChange={e => this.handleChange(e)} />
+
+            <label>  ECO</label> 
+            <input type="checkbox" name="eco" value="Eco" onChange={e => this.handleChange(e)} />
+
+            <label>  C</label> 
+            <input type="checkbox" name="c" value="C" onChange={e => this.handleChange(e)} />
+
+            <label>  B</label> 
+            <input type="checkbox" name="b" value="B" onChange={e => this.handleChange(e)} />
+          </div>
+
+
+{/* // 
+
+// <div class="pegatina">
+// <div className="container">
+//       <div className="row">
+//         <div className="col-sm-12">
+
+//           <form onSubmit={this.handleFormSubmit}>
+//             {this.createCheckboxes()}
+
+//             <button className="btn btn-default" type="submit">Save</button>
+//           </form>
+
+//         </div>
+//       </div>
+//     </div>
+// </div> */}
+
+      
 
           <input type="submit" value="Signup"/>
         </form>

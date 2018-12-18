@@ -12,7 +12,6 @@ import {
 
 
 let arrayInfo = [];
-let pollutionInfo = [];
 // let infoPollution = pollutions.data.data.iaqi.no2.v;
 
 
@@ -31,7 +30,11 @@ export default class Map extends Component {
       address: "",
       lat: 40.392321599999995,
       lng: -3.6985121999999997,
-      zoom: 13
+      zoom: 13,
+      start:{lat:"", lng:""},
+      end:{lat:"", lng:""},
+      pollutionInfo:[],
+      arrayInfo:[]
     };
   }
 
@@ -44,7 +47,6 @@ export default class Map extends Component {
         `http://api.waqi.info/feed/${city}/?token=78c5fbbab6b2531e1aa2412418bd283e637270a3`
       )
       .then(pollutions => {
-        console.log(pollutions.data.data)
         let pollutionPoint = {
           position: {
             lat: pollutions.data.data.city.geo[0],
@@ -52,7 +54,9 @@ export default class Map extends Component {
           },
           name: pollutions.data.data.iaqi.no2.v
         };
-        pollutionInfo.push(pollutionPoint);
+        const _state = {...this.state}
+        _state.pollutionInfo.push(pollutionPoint)
+        this.setState(_state)
       });
   };
 
@@ -63,7 +67,6 @@ export default class Map extends Component {
 
   getLocations = () => {
     let array = data["@graph"];
-    // .then(response => response.json())
 
     array.forEach(arr => {
       let arrayData = {
@@ -74,39 +77,34 @@ export default class Map extends Component {
         // address: arr.streetaddress,
         info: arr.organization
       };
-      arrayInfo.push(arrayData);
+      const _state = {...this.state}
+        _state.arrayInfo.push(arrayData)
+        this.setState(_state)
     });
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(data => {
-        let currentPosition = {
-          lat: data.coords.latitude,
-          lng: data.coords.longitude
-        };
-        // this.initMap(currentPosition)
-      });
-    }
+  
   };
 
   updateCoordinates = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng =>
-        this.setState({ ...this.state, lat: latLng.lat, lng: latLng.lng })
+        this.setState({ ...this.state, lat: latLng.lat, lng: latLng.lng }) 
       )
       .catch(error => console.error(`Error`, error));
   };
 
-  // getCoordinates = coordinates => {
-  //   this.setState({ ...this.state, coordinates });
-  // };
-  // getCoordinates = coordinates2 => {
-  //   this.setState({ ...this.state, coordinates2 });
-  // };
-
+  // hacer función para start y para end y quitar la de updateCoordinates
 
   
-  render() {
 
+
+  componentWillMount() {
+    this.getPollution("Madrid");
+    this.getLocations();
+
+  }
+
+  render() {
     return (
       <div>
 
@@ -130,7 +128,8 @@ export default class Map extends Component {
           <input type="radio" name="type" id="changemode-driving" />
           <label for="changemode-driving">Driving</label>
         </div>
-        <MapWithADirectionsRenderer />
+        <MapWithADirectionsRenderer center={{lat:this.state.lat, lng: this.state.lng}} pollution={this.state.pollutionInfo} arrayInfo={this.state.arrayInfo}/>
+        {/* center no me servirá y tengo q poner lo de start y end */}
 
       </div>
     );
