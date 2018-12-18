@@ -137,8 +137,8 @@ const MapWithADirectionsRenderer = compose(
       const DirectionsService = new window.google.maps.DirectionsService();
 
       DirectionsService.route({
-        origin: new window.google.maps.LatLng(40.375645, -3.697076), //PASAR POR PROPS LA INFO props.center.start
-        destination: new window.google.maps.LatLng(40.406964, -3.672410), //PASAR POR PROPS LA INFO
+        origin: new window.google.maps.LatLng(this.props.center), //////
+        destination: new window.google.maps.LatLng(40.406964, -3.672410), ///////
         travelMode: google.maps.TravelMode.DRIVING,
 
         // waypoints:
@@ -158,11 +158,8 @@ const MapWithADirectionsRenderer = compose(
   defaultZoom={7}
   defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
   center={new google.maps.LatLng(props.center)}
-  
-  
-  
-  
   >
+
   {console.log(props.center.lat)}
    {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}
     {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} icon="./img/iconParking.png"/>)}

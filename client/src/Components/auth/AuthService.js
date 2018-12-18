@@ -11,7 +11,6 @@ class AuthService {
   signup = (user) => {
     const formData = new FormData();
     Object.keys(user).forEach(key => formData.append(key, user[key]));
-
     return this.service.post('/signup', formData, {
         headers: {
           "Content-Type": "multipart/form-data"

@@ -23,14 +23,17 @@ authRoutes.post("/login", function(req, res, next) {
 
 
 authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
-  const { username, password, pictureUrl, email, coche, CERO, ECO, C, B, } = req.body;  // COMO AÑADO CHECKBOX??
-  const pictureUrl = req.file.url;
+  const { username, password, email, coche, check} = req.body;  ///////()
+  console.log(req.body, '------------', req.file)
+  const pictureUrl = req.file? req.file.url: "";
 
   
   if (username === "" || password === "") {
     res.status(500).json({ message: "Indicate username and password" });
     return;
   }
+
+  
 
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
@@ -47,10 +50,7 @@ authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
       pictureUrl,
       email,
       coche,
-      CERO,
-      ECO,    //
-      C,
-      B,
+      check
     });
 
     newUser.save((err, user) => {

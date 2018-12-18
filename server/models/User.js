@@ -7,12 +7,7 @@ const userSchema = new Schema({
   password: String,
   pictureUrl: String,
   coche: String,
-  CERO: Boolean,
-  ECO: Boolean,
-  C: Boolean,
-  B: Boolean,
-
-
+  check: Boolean //////
 }, {
   timestamps: {
     createdAt: 'created_at',
