@@ -133,24 +133,30 @@ const MapWithADirectionsRenderer = compose(
   withScriptjs,
   withGoogleMap,
   lifecycle({
+    componentWillReceiveProps() {
+      debugger
+      if (this.props.journeyOrigin && this.props.journeyDestination) {
+        const DirectionsService = new window.google.maps.DirectionsService();
+
+        DirectionsService.route({
+          origin: new window.google.maps.LatLng(this.props.journeyOrigin.lat, this.props.journeyOrigin.lng), //PASAR POR PROPS LA INFO props.center.start
+          destination: new window.google.maps.LatLng(this.props.journeyDestination.lat, this.props.journeyDestination.lng), //PASAR POR PROPS LA INFO
+          travelMode: google.maps.TravelMode.DRIVING,
+  
+          // waypoints:
+        }, (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result,
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        });
+      }
+    },
     componentDidMount() {
-      const DirectionsService = new window.google.maps.DirectionsService();
-
-      DirectionsService.route({
-        origin: new window.google.maps.LatLng(40.375645, -3.697076), //PASAR POR PROPS LA INFO props.center.start
-        destination: new window.google.maps.LatLng(40.406964, -3.672410), //PASAR POR PROPS LA INFO
-        travelMode: google.maps.TravelMode.DRIVING,
-
-        // waypoints:
-      }, (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result,
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      });
+      
     }
   })
 )(props =>

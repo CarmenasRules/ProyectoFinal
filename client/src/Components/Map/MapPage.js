@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import MapWithADirectionsRenderer from './Map'
-import AutocompleteEnd from "./autocompleteEnd";
-import AutocompleteStart from "./autocompleteStart";
+import Autocomplete from "./autocomplete";
 import data from "../../parking.json";
+import './Map.css'
 import {
   geocodeByAddress,
   geocodeByPlaceId,
@@ -84,11 +84,20 @@ export default class Map extends Component {
   
   };
 
-  updateCoordinates = address => {
+  updateCoordinates = (address, originOrDestination) => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng =>
-        this.setState({ ...this.state, lat: latLng.lat, lng: latLng.lng }) 
+        {
+          let _state = {...this.state};
+
+          _state[originOrDestination] = {
+            lat: latLng.lat, 
+            lng: latLng.lng
+          } 
+
+          this.setState(_state)
+        }
       )
       .catch(error => console.error(`Error`, error));
   };
@@ -109,8 +118,8 @@ export default class Map extends Component {
       <div>
 
       <div>
-          <AutocompleteStart updateCoordinates={this.updateCoordinates} />
-          <AutocompleteEnd updateCoordinates={this.updateCoordinates} />
+          <Autocomplete updateCoordinates={this.updateCoordinates} type="origin" />
+          <Autocomplete updateCoordinates={this.updateCoordinates} type="destination" />
         </div>
 
         <div id="mode-selector" class="controls">
@@ -128,7 +137,7 @@ export default class Map extends Component {
           <input type="radio" name="type" id="changemode-driving" />
           <label for="changemode-driving">Driving</label>
         </div>
-        <MapWithADirectionsRenderer center={{lat:this.state.lat, lng: this.state.lng}} pollution={this.state.pollutionInfo} arrayInfo={this.state.arrayInfo}/>
+        <MapWithADirectionsRenderer journeyOrigin={this.state.origin} journeyDestination={this.state.destination} center={{lat:this.state.lat, lng: this.state.lng}} pollution={this.state.pollutionInfo} arrayInfo={this.state.arrayInfo}/>
         {/* center no me servirá y tengo q poner lo de start y end */}
 
       </div>

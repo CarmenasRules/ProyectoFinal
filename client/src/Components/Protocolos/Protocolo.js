@@ -6,6 +6,16 @@ export default class Protocolo extends Component {
   render() {
     return (
       <div>
+         <div className="primero">
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h1 class="tituloprotocolo"> Protocolos </h1>
+        </div>
         <h1>AVISOS DE CONTAMINACIÓN</h1>
         <h2>PREAVISO</h2>
         <p>

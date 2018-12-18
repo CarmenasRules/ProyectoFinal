@@ -29,6 +29,9 @@ display: flex;
   height: 3rem;
   border-radius: 20%;
 }
+.buttonmasinfo a:active{
+  color: gray;
+}
 .servicios {
 margin-left: -4rem;
   margin-top: 10rem;

@@ -23,8 +23,8 @@ export default class AutocompleteStart extends Component {
   };
   
   handleSelect = address => {
-    this.setState({...this.state, address}, ()=>{
-      this.props.updateCoordinates(address)
+    this.setState({...this.state, origin: address, destination: address}, ()=>{
+      this.props.updateCoordinates(address, this.props.type)
     })
     //   geocodeByAddress(address)
     //     .then(results => getLatLng(results[0]))

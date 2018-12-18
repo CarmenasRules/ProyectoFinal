@@ -1,0 +1,83 @@
+.madridc {
+  margin-top: 0rem;
+  margin-bottom: -4rem;
+}
+.titulo1 {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+ 
+}
+.primero {
+  background-color: #7ba4cf;
+  height: 400px;
+}
+.colors1 {
+}
+.colors2 {
+  background-color: bisque;
+}
+.colors3 {
+  background-color: bisque;
+  margin-bottom: 30px;
+    }
+.info {  
+}
+.info1 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-left: 300px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+
+}
+.info2 {
+  margin-left: 300px;
+  right: 350px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+  margin-bottom: 100px;
+
+}
+.info3 {
+  margin-left: 300px;
+  right: 350px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+  margin-bottom: 100px;
+}
+.info4 {
+  margin-left: 300px;
+  right: 350px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+  margin-bottom: 100px;
+}
+.info5 {
+  margin-left: 300px;
+  right: 350px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+  margin-bottom: 100px;
+}
+.info6 {
+  margin-left: 300px;
+  right: 350px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+  margin-bottom: 100px;
+}
+.info7 {
+  margin-left: 300px;
+  right: 350px;
+  width: 800px;
+  padding: 10px;
+  line-height: 2.5;
+  margin-bottom: 100px;
+}
