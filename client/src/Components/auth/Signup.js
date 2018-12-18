@@ -32,7 +32,7 @@ export default class Signup extends Component {
 
     this.authService.signup({username, password, photo, coche, email, check}) // como meto aquí  checkbox??¿¿??
     .then(user => {
-      // this.props.getUser(user) DESCOMENT CUANDO HAYA PUESTO
+      this.props.getUser(user) //DESCOMENT CUANDO HAYA PUESTO
       this.setState({username: '', password: '', photo: '', coche: '', email: '', check:'', redirect: true}) //checkbox aqui?
     });
   }

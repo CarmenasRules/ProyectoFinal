@@ -18,10 +18,39 @@ import MadridCentral from './Components/MadridCentral/MadridCentral';
 
 
 class App extends Component {
-  state = {
-    sideDrawerOpen: false
-  };
+  constructor() {
+    super();
 
+    this.state = {
+      user: null,
+       //sideDrawerOpen: false
+    };
+
+    this.authService = new AuthService();
+    this.fetchUser();
+  }
+
+
+
+fetchUser = () => {
+  this.authService
+    .loggedin()
+    .then(user => this.setState({ ...this.state, user }));
+};
+
+getUser = user => {
+  this.setState({ ...this.state, user });
+};
+
+logout = () => {
+  this.authService
+    .logout()
+    .then(() => this.setState({ ...this.state, user: null }));
+};
+
+
+
+ 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
       return {sideDrawerOpen: !prevState.sideDrawerOpen};
@@ -53,7 +82,7 @@ class App extends Component {
               <Link to="/login">Login</Link> -{" "}
               <Link to="/Map">Map</Link> -{" "}
               <Link to="/MadridCentral">Madrid Central</Link> -{" "}
-              <Link to="/Protocolo">Protocolos</Link>
+              <Link to="/Protocolo">Protocolos</Link >-{" "}
               
 
             </div>
@@ -84,6 +113,7 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
 
