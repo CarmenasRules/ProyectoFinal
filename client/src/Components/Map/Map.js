@@ -121,36 +121,41 @@ const coords = [
 
 
 
+    
+    const MapWithADirectionsRenderer = compose(
+      withProps({
+        googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
+        loadingElement: <div style={{ height: `100%` }} />,
+        containerElement: <div style={{ height: `590px` }} />,
+        mapElement: <div style={{ height: `100%` }} />,
+      }),
+      withScriptjs,
+      withGoogleMap,
+      lifecycle({
+        componentWillReceiveProps() {
+          
+          // console.log("------------------------------------------")
+        
+        
+      if (this.props.journeyOrigin && this.props.journeyDestination) {
+        const DirectionsService = new window.google.maps.DirectionsService();
 
-
-const MapWithADirectionsRenderer = compose(
-  withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyApM0H8i-9V4kDgjug0RW04LOwSRV18uYw&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `590px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
-  }),
-  withScriptjs,
-  withGoogleMap,
-  lifecycle({
-    componentDidMount() {
-      const DirectionsService = new window.google.maps.DirectionsService();
-
-      DirectionsService.route({
-        origin: new window.google.maps.LatLng(this.props.center), //////
-        destination: new window.google.maps.LatLng(40.406964, -3.672410), ///////
-        travelMode: google.maps.TravelMode.DRIVING,
-
-        // waypoints:
-      }, (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result,
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      });
+        DirectionsService.route({
+          origin: new window.google.maps.LatLng(this.props.journeyOrigin.lat, this.props.journeyOrigin.lng), //PASAR POR PROPS LA INFO props.center.start
+          destination: new window.google.maps.LatLng(this.props.journeyDestination.lat, this.props.journeyDestination.lng), //PASAR POR PROPS LA INFO
+          travelMode: google.maps.TravelMode.DRIVING,
+  
+          // waypoints:
+        }, (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result,
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        });
+      }
     }
   })
 )(props =>
