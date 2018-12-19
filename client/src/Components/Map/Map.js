@@ -8,7 +8,7 @@ import {
   GoogleMap,
   DirectionsRenderer,
   Marker,
-  Polygon
+  Polygon,
 } from "react-google-maps";
 import React, { Component } from "react";
 import data from "../../parking.json";
@@ -33,14 +33,22 @@ const coords = [
   { lng: 40.414932, lat:  -3.694140 },
   { lng: 40.409063, lat: -3.692270 },
   { lng: 40.408861, lat: -3.692386 },];
-
+  
   const reversedCoords = coords.map( ll => {
     return { lat: ll.lng, lng: ll.lat }
   });
   
 
     
+
     const MapWithADirectionsRenderer = compose(
+  //      withStateHandlers(() => ({
+  //   isOpen: false,
+  // }), {
+  //   onToggleOpen: ({ isOpen }) => () => ({
+  //     isOpen: !isOpen,
+  //   })
+  // })
       withProps({
         googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_APIKEY}&v=3.exp&libraries=geometry,drawing,places`,
         loadingElement: <div style={{ height: `100%` }} />,
@@ -59,9 +67,9 @@ const coords = [
         DirectionsService.route({
           origin: new window.google.maps.LatLng(this.props.journeyOrigin.lat, this.props.journeyOrigin.lng), 
           destination: new window.google.maps.LatLng(this.props.journeyDestination.lat, this.props.journeyDestination.lng), 
-          travelMode: google.maps.TravelMode.DRIVING,
-  
-         
+          travelMode: google.maps.TravelMode.TRANSIT,
+   
+          
         }, (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
             this.setState({
@@ -82,7 +90,9 @@ const coords = [
   center={new google.maps.LatLng(props.center)}
   >
   
-   {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}  
+   {/* {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}   */}
+  {console.log(props.center.lat)}
+   {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}
     {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} animation={window.google.maps.Animation.DROP} icon="./img/iconParking.png"/>)}
     {props.pollution && props.pollution.map(info => {
     // IF DE  MARKER ICON DE POLUTION
@@ -91,11 +101,11 @@ const coords = [
             path={reversedCoords}
             //key={1}
             options={{
-                fillColor: "#000",
-                fillOpacity: 0.4,
-                strokeColor: "#000",
-                strokeOpacity: 1,
-                strokeWeight: 1
+              fillColor: "#000",
+              fillOpacity: 0.4,
+              strokeColor: "#000",
+              strokeOpacity: 1,
+              strokeWeight: 1
             }} />
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
