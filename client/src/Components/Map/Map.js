@@ -165,7 +165,7 @@ const coords = [
 
   {console.log(props.center.lat)}
    {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}
-    {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} icon="./img/iconParking.png"/>)}
+    {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} animation={window.google.maps.Animation.DROP} icon="./img/iconParking.png"/>)}
         <Polygon
             path={reversedCoords}
             //key={1}
