@@ -13,7 +13,7 @@ import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
 import MapPage from './Components/Map/MapPage';
 import MadridCentral from './Components/MadridCentral/MadridCentral';
-
+import Perfil from './Components/Perfil/Perfil'
 
 
 
@@ -53,7 +53,8 @@ class App extends Component {
               <Link to="/login">Login</Link> -{" "}
               <Link to="/Map">Map</Link> -{" "}
               <Link to="/MadridCentral">Madrid Central</Link> -{" "}
-              <Link to="/Protocolo">Protocolos</Link>
+              <Link to="/Protocolo">Protocolos</Link> -{" "}
+              <Link to="/Perfil">Perfil</Link>
               
 
             </div>
@@ -70,6 +71,7 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/MadridCentral" component={MadridCentral} />
                 <Route exact path="/Protocolo" component={Protocolo} />
+                <Route exact path="/Perfil" component={Perfil} />
                 </Switch>
               </div>
               

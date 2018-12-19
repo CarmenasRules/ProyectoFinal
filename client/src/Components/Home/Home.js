@@ -21,7 +21,7 @@ export default class Home extends Component {
     </div>
     <div className="informationp">
         <h1 className="quienesomos">¿Quiénes somos?</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum at est eget porta. Pellentesque et leo vel odio lobortis malesuada vitae et lectus. Nunc risus mi, tristique vel tortor in, malesuada finibus dui. Etiam dictum neque id tortor euismod, et interdum augue vulputate. Nam bibendum gravida diam, ut malesuada odio. Integer a magna eget est condimentum elementum. Donec sed malesuada nunc. Vestibulum et augue lectus. Phasellus sollicitudin urna sit amet turpis iaculis tempus. Aliquam vel suscipit nisi. Quisque lacinia quis sapien eu euismod. Aenean vel ullamcorper ex. Maecenas et molestie dolor, vitae posuere augue.</p>
+        <p>Somos un par de programadores que hemos desarrollado una app para poder viajar por Madrid sin miedo a la restricciones por la  contaminación. Esto lo logramos gracias a un registro en el que indicará su pegatina de contaminación y en base a esto podrá saber si entrar a la almendra central de Madrid o no dependiendo de el nivel de contaminación que también podrá revisar. </p>
         <button className="buttonmasinfo">Más Información</button>
     </div>
 

@@ -132,9 +132,7 @@ const coords = [
       withScriptjs,
       withGoogleMap,
       lifecycle({
-        componentWillReceiveProps() {
-          
-          // console.log("------------------------------------------")
+        componentWillReceiveProps() {        
         
         
       if (this.props.journeyOrigin && this.props.journeyDestination) {
@@ -143,7 +141,7 @@ const coords = [
         DirectionsService.route({
           origin: new window.google.maps.LatLng(this.props.journeyOrigin.lat, this.props.journeyOrigin.lng), //PASAR POR PROPS LA INFO props.center.start
           destination: new window.google.maps.LatLng(this.props.journeyDestination.lat, this.props.journeyDestination.lng), //PASAR POR PROPS LA INFO
-          travelMode: google.maps.TravelMode.DRIVING,
+          travelMode: google.maps.TravelMode.TRANSIT,
   
           // waypoints:
         }, (result, status) => {
@@ -160,7 +158,7 @@ const coords = [
   })
 )(props =>
   <GoogleMap
-  defaultZoom={7}
+  defaultZoom={12}
   defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
   center={new google.maps.LatLng(props.center)}
   >
