@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Map from './Protocolo.css';
+// import Protocolo from './Protocolo.css';
 
 
 export default class Protocolo extends Component {

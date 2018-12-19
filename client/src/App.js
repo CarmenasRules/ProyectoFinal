@@ -13,6 +13,7 @@ import SideDrawer from './Components/SideDrawer/SideDrawer';
 import Backdrop from './Components/Backdrop/Backdrop';
 import MapPage from './Components/Map/MapPage';
 import MadridCentral from './Components/MadridCentral/MadridCentral';
+import ProtocoloNavidad from './Components/ProtocoloNavidad/ProtocoloNavidad';
 
 
 
@@ -72,7 +73,10 @@ logout = () => {
             <div>
               <p>Hola {this.state.user.username}</p>
               <button onClick={this.logout}>Logout</button>
-              <MapPage>Mapa</MapPage>
+              <Link to="/MapPage">Map</Link> -{" "}
+              <Link to="/MadridCentral">Madrid Central</Link> -{" "}
+              <Link to="/Protocolo">Protocolos</Link >-{" "}
+              <Link to="/ProtocoloNavidad">ProtocoloNavidad</Link > -{" "}
              
             </div>
           ) : (
@@ -80,11 +84,7 @@ logout = () => {
               <p>No user</p>
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
-              <Link to="/Map">Map</Link> -{" "}
-              <Link to="/MadridCentral">Madrid Central</Link> -{" "}
-              <Link to="/Protocolo">Protocolos</Link >-{" "}
               
-
             </div>
           );
 
@@ -95,10 +95,11 @@ logout = () => {
                <Switch>     
                 <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
                 <Route path="/login" render={() => <Login getUser={this.getUser} />} />
-                <Route exact path="/Map" component={MapPage} />
+                <Route exact path="/MapPage" component={MapPage} />
                 <Route exact path="/" component={Home} />
                 <Route exact path="/MadridCentral" component={MadridCentral} />
                 <Route exact path="/Protocolo" component={Protocolo} />
+                <Route exact path="/ProtocoloNavidad" component={ProtocoloNavidad} />
                 </Switch>
               </div>
               
