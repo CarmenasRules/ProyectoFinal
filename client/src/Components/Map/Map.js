@@ -124,7 +124,7 @@ const coords = [
     
     const MapWithADirectionsRenderer = compose(
       withProps({
-        googleMapURL: "https://maps.googleapis.com/maps/api/js?key={APIKEY}=3.exp&libraries=geometry,drawing,places",
+        googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_APIKEY}&v=3.exp&libraries=geometry,drawing,places`,
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `590px` }} />,
         mapElement: <div style={{ height: `100%` }} />,
@@ -139,11 +139,11 @@ const coords = [
         const DirectionsService = new window.google.maps.DirectionsService();
 
         DirectionsService.route({
-          origin: new window.google.maps.LatLng(this.props.journeyOrigin.lat, this.props.journeyOrigin.lng), //PASAR POR PROPS LA INFO props.center.start
-          destination: new window.google.maps.LatLng(this.props.journeyDestination.lat, this.props.journeyDestination.lng), //PASAR POR PROPS LA INFO
-          travelMode: google.maps.TravelMode.TRANSIT,
+          origin: new window.google.maps.LatLng(this.props.journeyOrigin.lat, this.props.journeyOrigin.lng), 
+          destination: new window.google.maps.LatLng(this.props.journeyDestination.lat, this.props.journeyDestination.lng), 
+          travelMode: google.maps.TravelMode.DRIVING,
   
-          // waypoints:
+         
         }, (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
             this.setState({
@@ -158,7 +158,7 @@ const coords = [
   })
 )(props =>
   <GoogleMap
-  defaultZoom={12}
+  defaultZoom={13}
   defaultCenter={new google.maps.LatLng(40.406964, -3.672410)}
   center={new google.maps.LatLng(props.center)}
   >

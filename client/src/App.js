@@ -14,14 +14,45 @@ import Backdrop from './Components/Backdrop/Backdrop';
 import MapPage from './Components/Map/MapPage';
 import MadridCentral from './Components/MadridCentral/MadridCentral';
 import Perfil from './Components/Perfil/Perfil'
+import ProtocoloNavidad from './Components/ProtocoloNavidad/ProtocoloNavidad';
+
 
 
 
 class App extends Component {
-  state = {
-    sideDrawerOpen: false
-  };
+  constructor() {
+    super();
 
+    this.state = {
+      user: null,
+       //sideDrawerOpen: false
+    };
+
+    this.authService = new AuthService();
+    this.fetchUser();
+  }
+
+
+
+fetchUser = () => {
+  this.authService
+    .loggedin()
+    .then(user => this.setState({ ...this.state, user }));
+};
+
+getUser = user => {
+  this.setState({ ...this.state, user });
+};
+
+logout = () => {
+  this.authService
+    .logout()
+    .then(() => this.setState({ ...this.state, user: null }));
+};
+
+
+
+ 
   drawerToggleClickHandler = () => {
     this.setState((prevState) => {
       return {sideDrawerOpen: !prevState.sideDrawerOpen};
@@ -43,20 +74,18 @@ class App extends Component {
             <div>
               <p>Hola {this.state.user.username}</p>
               <button onClick={this.logout}>Logout</button>
-              <MapPage>Mapa</MapPage>
-             
+              <Link to="/MapPage">Map</Link> -{" "}
+              <Link to="/MadridCentral">Madrid Central</Link> -{" "}
+              <Link to="/Protocolo">Protocolos</Link >-{" "}
+              <Link to="/ProtocoloNavidad">ProtocoloNavidad</Link > -{" "}
+              <Link to="/Perfil">Perfil</Link>
             </div>
           ) : (
             <div>
               <p>No user</p>
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
-              <Link to="/Map">Map</Link> -{" "}
-              <Link to="/MadridCentral">Madrid Central</Link> -{" "}
-              <Link to="/Protocolo">Protocolos</Link> -{" "}
-              <Link to="/Perfil">Perfil</Link>
               
-
             </div>
           );
 
@@ -67,11 +96,12 @@ class App extends Component {
                <Switch>     
                 <Route path="/signup" render={() => <Signup getUser={this.getUser} />}/>
                 <Route path="/login" render={() => <Login getUser={this.getUser} />} />
-                <Route exact path="/Map" component={MapPage} />
+                <Route exact path="/MapPage" component={MapPage} />
                 <Route exact path="/" component={Home} />
                 <Route exact path="/MadridCentral" component={MadridCentral} />
                 <Route exact path="/Protocolo" component={Protocolo} />
                 <Route exact path="/Perfil" component={Perfil} />
+                <Route exact path="/ProtocoloNavidad" component={ProtocoloNavidad} />
                 </Switch>
               </div>
               
@@ -86,6 +116,7 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
 
