@@ -83,6 +83,7 @@ logout = () => {
           ) : (
             <div>
               <p>No user</p>
+              <Link to="/MapPage">Map</Link> -{" "}
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
               
