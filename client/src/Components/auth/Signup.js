@@ -28,12 +28,12 @@ export default class Signup extends Component {
     let checkboxClicked = document.getElementsByClassName("cero")[0].checked
     console.log(checkboxClicked)
 
-    const {username, password, photo, coche, email, check} = this.state;  // como meto aquí  checkbox??¿¿??
+    const {username, password, photo, coche, email, check} = this.state;  
 
-    this.authService.signup({username, password, photo, coche, email, check}) // como meto aquí  checkbox??¿¿??
+    this.authService.signup({username, password, photo, coche, email, check}) 
     .then(user => {
       this.props.getUser(user) 
-      this.setState({username: '', password: '', photo: '', coche: '', email: '', check:'', redirect: true}) //checkbox aqui?
+      this.setState({username: '', password: '', photo: '', coche: '', email: '', check:'', redirect: true}) 
     });
   }
 
@@ -60,7 +60,7 @@ export default class Signup extends Component {
           
           <h2>Usuario</h2>
           <div class="Username">
-            <label>Nombre y apellido  </label>
+            <label>Nombre de usuario  </label>
             <input  type="text" name="username" onChange={e => this.handleChange(e)} />
           </div>  
 

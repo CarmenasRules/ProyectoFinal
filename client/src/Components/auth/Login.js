@@ -35,11 +35,11 @@ export default class Login extends Component {
       {/* <img src={logo} /> */}
         <h2>Login</h2>
         <form onSubmit={this.handleFormSubmit}>
-          <label class="username">Username</label>
+          <label class="username">Nombre de usuario  </label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
 <br></br>
 <br></br>
-          <label>Password</label>
+          <label>Contraseña  </label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 
           <input type="submit" value="Login"/>
