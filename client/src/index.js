@@ -4,15 +4,14 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Toggleinfo from './Components/Map/Toggleinfo';
+import registerServiceWorker from './serviceWorker';
+
+ReactDOM.render(<Toggleinfo />, document.getElementById('root'));
+registerServiceWorker();
 
 
-// ReactDOM.render(
-//     <GoogleMapsComponent
-//         currentLatitude={40.2946271} 
-//         currentLongitude={-3.6597791}
-//         destinationLatitude={40.34923015}
-//         destinationLongitude={-3.8284724}
-//     />, document.getElementById('root'));
 
 ReactDOM.render(
   <BrowserRouter>

@@ -15,7 +15,7 @@ import MapPage from './Components/Map/MapPage';
 import MadridCentral from './Components/MadridCentral/MadridCentral';
 import Perfil from './Components/Perfil/Perfil'
 import ProtocoloNavidad from './Components/ProtocoloNavidad/ProtocoloNavidad';
-
+import ToggleInfo from './Components/Map/Toggleinfo'
 
 
 
@@ -79,6 +79,7 @@ logout = () => {
               <Link to="/Protocolo">Protocolos</Link >-{" "}
               <Link to="/ProtocoloNavidad">ProtocoloNavidad</Link > -{" "}
               <Link to="/Perfil">Perfil</Link>
+              <Link to="/Toggleinfo">ToggleInfo</Link>
             </div>
           ) : (
             <div>
@@ -86,7 +87,7 @@ logout = () => {
               <Link to="/MapPage">Map</Link> -{" "}
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
-              
+              <Link to="/ToggleInfo">ToggleInfo</Link> -{" "}
             </div>
           );
 
@@ -103,6 +104,7 @@ logout = () => {
                 <Route exact path="/Protocolo" component={Protocolo} />
                 <Route exact path="/Perfil" component={Perfil} />
                 <Route exact path="/ProtocoloNavidad" component={ProtocoloNavidad} />
+                <Route exact path="/Toggleinfo" component={ToggleInfo} />
                 </Switch>
               </div>
               

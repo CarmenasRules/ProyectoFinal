@@ -7,9 +7,10 @@ import './Map.css'
 import {
   geocodeByAddress,
   geocodeByPlaceId,
-  getLatLng
+  getLatLng,
+  GroundOverlay,
 } from "react-places-autocomplete";
-
+import Toggleinfo from './Toggleinfo'
 
 let arrayInfo = [];
 // let infoPollution = pollutions.data.data.iaqi.no2.v;
@@ -84,6 +85,8 @@ export default class Map extends Component {
   
   };
 
+
+
   updateCoordinates = (address, originOrDestination) => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
@@ -101,12 +104,7 @@ export default class Map extends Component {
       )
       .catch(error => console.error(`Error`, error));
   };
-
-  // hacer función para start y para end y quitar la de updateCoordinates
-
   
-
-
   componentWillMount() {
     this.getPollution("Madrid");
     this.getLocations();
@@ -138,7 +136,13 @@ export default class Map extends Component {
           <input type="radio" name="type" id="changemode-driving" />
           <label for="changemode-driving">Driving</label>
         </div>
-        <MapWithADirectionsRenderer journeyOrigin={this.state.origin} journeyDestination={this.state.destination} center={{lat:this.state.lat, lng: this.state.lng}} pollution={this.state.pollutionInfo} arrayInfo={this.state.arrayInfo}/>
+        <MapWithADirectionsRenderer 
+        journeyOrigin={this.state.origin}
+         journeyDestination={this.state.destination} 
+         center={{lat:this.state.lat, lng: this.state.lng}} 
+         pollution={this.state.pollutionInfo} 
+         arrayInfo={this.state.arrayInfo} 
+         /> <Toggleinfo />
         {/* center no me servirá y tengo q poner lo de start y end */}
 
       </div>
