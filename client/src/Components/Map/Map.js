@@ -62,7 +62,7 @@ class Map extends React.Component {
   }
 
    showInfo= (a)=>{
-    console.log("holaaaa")
+    
     this.setState({showInfoIndex: a })
    }
 
