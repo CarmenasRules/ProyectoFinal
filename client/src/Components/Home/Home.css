@@ -36,8 +36,8 @@ display: flex;
 margin-left: -4rem;
   margin-top: 10rem;
 }
-.backgroundimg {
-  background-image: url("../../img/fotodefondo.jpg");
+.backgroundimg2 {
+  background-image: url("../../img/fotodefondo2.jpg");
   background-attachment: fixed;
   /* overflow: scroll; */
   height: 45rem;
