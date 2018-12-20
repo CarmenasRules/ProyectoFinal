@@ -73,15 +73,23 @@ logout = () => {
     }
           const welcome = this.state.user ? (
             <div>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
               <p>Hola {this.state.user.username}</p>
               <button onClick={this.logout}>Logout</button>
+              
               <Link to="/MapPage">Map</Link> -{" "}
               <Link to="/MadridCentral">Madrid Central</Link> -{" "}
               <Link to="/Protocolo">Protocolos</Link >-{" "}
               <Link to="/ProtocoloNavidad">ProtocoloNavidad</Link > -{" "}
               <Link to="/Perfil">Perfil</Link> -{" "}
-              <Link to="/Toggleinfo">ToggleInfo</Link> -{" "}
+              {/* <Link to="/Toggleinfo">ToggleInfo</Link> -{" "} */}
               <Link to="/Carsharing">Carsharing</Link> 
+             
             </div>
           ) : (
             <div>
@@ -104,7 +112,7 @@ logout = () => {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/MadridCentral" component={MadridCentral} />
                 <Route exact path="/Protocolo" component={Protocolo} />
-                <Route exact path="/Perfil" component={Perfil} />
+                <Route exact path="/Perfil" render={() => <Perfil  user={this.state.user}/>} />
                 <Route exact path="/ProtocoloNavidad" component={ProtocoloNavidad} />
                 <Route exact path="/Toggleinfo" component={ToggleInfo} />
                 <Route exact path="/Carsharing" component={Carsharing} />

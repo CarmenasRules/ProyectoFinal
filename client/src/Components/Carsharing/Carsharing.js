@@ -12,17 +12,18 @@ export default class Protocolo extends Component {
     return (
       <div>
 
-<div className="primero">
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <h1 className="titulo1"> Carsharing </h1>
-        
+
+        <div className="carSharing ">
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+         <h1 className="titulo1 "> Carsharing </h1>
         </div>
+
         <div className= "color1">
         <div className="info1">
         <h2>¿Qué es?</h2>
@@ -46,14 +47,14 @@ export default class Protocolo extends Component {
 
 <div className="color3">
 <div className="info3">
-  <img src={car2} height="300px" width="320px" /> <br></br> <br></br>
+  <img  src={car2} height="280px" width="320px" /> <br></br> <br></br>
     <a href="https://www.car2go.com/ES/es/"> <h2>Car2Go</h2> </a>
 </div>
 </div>
 
 <div className= "color2">
 <div className="info2">
-<img src={emov} height="300px" width="310px" /> <br></br> <br></br>
+<img className="radius" src={emov} height="300px" width="330px" /> <br></br> <br></br>
   <a href="https://www.emov.eco/"> <h2>Emov</h2> </a>
 </div>
 </div>
@@ -61,14 +62,14 @@ export default class Protocolo extends Component {
 
 <div className="color5">
 <div className="info5">
-  <img src={wible} height="280px" width="450px" /> 
+  <img src={wible} height="260px" width="460px" /> 
   <a href="http://www.wible.es/"> <h2>Wible</h2> </a>
 </div>
 </div>
 
 <div className= "color4">
 <div className="info4">
-  <img src={zity} height="300px" width="340px" /> <br></br> <br></br>
+  <img className="radius" src={zity} height="270px" width="330px" /> <br></br> <br></br>
   <a href="https://zitycar.es/">  <h2>Zity</h2> </a>
 </div>
 </div>

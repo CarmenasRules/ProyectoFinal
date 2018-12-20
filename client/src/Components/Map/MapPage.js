@@ -22,8 +22,8 @@ export default class Map extends Component {
     
     this.state = {
       address: "",
-      lat: 40.392321599999995,
-      lng: -3.6985121999999997,
+      lat: 40.422363, 
+      lng: -3.675473,
       zoom: 13,
       start:{lat:"", lng:""},
       end:{lat:"", lng:""},
@@ -95,7 +95,6 @@ export default class Map extends Component {
   }
 
   render() {
-    // console.log(this.state)
     return (
       <div>
 

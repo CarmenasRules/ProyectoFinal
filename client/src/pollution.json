@@ -8,7 +8,7 @@
      { "url": "'https://waqi.info/'",
        "name": "'World Air Quality Index Project'" } ],
   "city": 
-   { "geo": [ 40.4167754, -3.7037902 ],
+   { "geo": [ 40.411166, -3.669479 ],
      "name": "'Madrid'",
      "url": "'https://aqicn.org/city/madrid'" },
   "dominentpol": "'pm25'",

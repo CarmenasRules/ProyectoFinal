@@ -6,11 +6,16 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  
  
 }
-.primero {
+.carSharing {
   background-color: #7ba4cf;
   height: 400px;
+  background-image: url("../../img/fondoCarsharing.jpg");
+  background-size:100% 100%;
+  color:green;
+  
 }
  .color1 {
   margin-top: 100px;
@@ -42,6 +47,20 @@ margin-top: 100px;
 }
 .info {  
 }
+
+.radius{
+  border-radius: 25px;
+}
+
+.backgroundimg {
+  background-image: url("../../img/carsharing.jpg");
+  
+  /* overflow: scroll; */
+  height: 45rem;
+  width: 90rem;
+  min-width: 50rem;
+}
+
 
 .info1 {
   /* margin-top: 50px;

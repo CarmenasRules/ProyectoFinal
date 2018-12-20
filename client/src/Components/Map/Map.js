@@ -14,6 +14,14 @@ import React, { Component } from "react";
 import data from "../../parking.json";
 
 
+import azul from '../../img/azul.png'
+import amarillo from '../../img/amarillo.png'
+import naranja from '../../img/naranja.png'
+import rojoClaro from '../../img/rojoClaro.png'
+import rojoOscuro from '../../img/rojoOscuro.png'
+import negro from '../../img/negro.png'
+
+
 
 const coords = [
   { lng: 40.408861, lat: -3.692386 },
@@ -90,25 +98,38 @@ const coords = [
   center={new google.maps.LatLng(props.center)}
   >
   
-   {/* {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}   */}
+  
   {console.log(props.center.lat)}
    {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}
     {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} animation={window.google.maps.Animation.DROP} icon="./img/iconParking.png"/>)}
     {props.pollution && props.pollution.map(info => {
       
       let icon;
-    if (props.pollution[0].no2 < 100) {
-      icon = "../../img/amarillo.png";
-    } else if (100< props.pollution[0].no2 < 250) {
-      icon = "../../img/orange.jpg";
-    } else {
-      icon = "../../img/rojo.png";
-    }
+        
+      if (props.pollution[0].no2 < 179) {
+      icon = azul;
+      } 
+        else if (180< props.pollution[0].no2 < 240) {
+      icon = amarillo;
+      }   
+      else if (241< props.pollution[0].no2 < 299) {
+        icon = naranja ;
+        } 
+        else if (300< props.pollution[0].no2 < 349) {
+        icon = rojoClaro;
+       } 
+        
+       else if (350< props.pollution[0].no2 < 399) {
+        icon = rojoOscuro;
+        } 
+      else {
+      icon = negro;
+      }
     
 
 
-    return (<Marker position={info.position} animation={window.google.maps.Animation.DROP} icon={info.icon}/>)})} 
-    {/* "./img/nube.png" */}
+    return (<Marker position={info.position} animation={window.google.maps.Animation.DROP} icon={icon}/>)})} 
+  
     
         <Polygon
             path={reversedCoords}
@@ -122,7 +143,7 @@ const coords = [
             }} />
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
-  // this.getlocation();
+  
 );
 
 
