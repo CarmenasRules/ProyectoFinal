@@ -66,7 +66,6 @@ export default class Map extends Component {
         _state.arrayInfo.push(arrayData)
         this.setState(_state)
     });
-  
   };
 
 
@@ -88,12 +87,6 @@ export default class Map extends Component {
       )
       .catch(error => console.error(`Error`, error));
   };
-<<<<<<< HEAD
-
-  
-
-=======
->>>>>>> 1291ac77238742a0830226c0613b8efa32c065b8
   
   componentWillMount() {
     this.getPollution("Madrid");
@@ -102,7 +95,7 @@ export default class Map extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
 
@@ -133,7 +126,6 @@ export default class Map extends Component {
          pollution={this.state.pollutionInfo} 
          arrayInfo={this.state.arrayInfo} 
          /> <Toggleinfo />
-        {/* center no me servirá y tengo q poner lo de start y end */}
 
       </div>
     );

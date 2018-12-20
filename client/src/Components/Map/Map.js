@@ -95,8 +95,21 @@ const coords = [
    {props.isMarkerShown && <Marker position={{ lat: 41.015137, lng: 28.979530 }} />}
     {props.arrayInfo && props.arrayInfo.map(info => <Marker position={info.position} animation={window.google.maps.Animation.DROP} icon="./img/iconParking.png"/>)}
     {props.pollution && props.pollution.map(info => {
-    // IF DE  MARKER ICON DE POLUTION
-    return (<Marker position={info.position} animation={window.google.maps.Animation.DROP} icon="./img/nube.png"/>)})}
+      
+      let icon;
+    if (props.pollution[0].no2 < 100) {
+      icon = "../../img/amarillo.png";
+    } else if (100< props.pollution[0].no2 < 250) {
+      icon = "../../img/orange.jpg";
+    } else {
+      icon = "../../img/rojo.png";
+    }
+    
+
+
+    return (<Marker position={info.position} animation={window.google.maps.Animation.DROP} icon={info.icon}/>)})} 
+    {/* "./img/nube.png" */}
+    
         <Polygon
             path={reversedCoords}
             //key={1}

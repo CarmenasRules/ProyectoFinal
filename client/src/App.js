@@ -16,6 +16,7 @@ import MadridCentral from './Components/MadridCentral/MadridCentral';
 import Perfil from './Components/Perfil/Perfil'
 import ProtocoloNavidad from './Components/ProtocoloNavidad/ProtocoloNavidad';
 import ToggleInfo from './Components/Map/Toggleinfo'
+import Carsharing from './Components/Carsharing/Carsharing';
 
 
 
@@ -78,8 +79,9 @@ logout = () => {
               <Link to="/MadridCentral">Madrid Central</Link> -{" "}
               <Link to="/Protocolo">Protocolos</Link >-{" "}
               <Link to="/ProtocoloNavidad">ProtocoloNavidad</Link > -{" "}
-              <Link to="/Perfil">Perfil</Link>
-              <Link to="/Toggleinfo">ToggleInfo</Link>
+              <Link to="/Perfil">Perfil</Link> -{" "}
+              <Link to="/Toggleinfo">ToggleInfo</Link> -{" "}
+              <Link to="/Carsharing">Carsharing</Link> 
             </div>
           ) : (
             <div>
@@ -105,6 +107,8 @@ logout = () => {
                 <Route exact path="/Perfil" component={Perfil} />
                 <Route exact path="/ProtocoloNavidad" component={ProtocoloNavidad} />
                 <Route exact path="/Toggleinfo" component={ToggleInfo} />
+                <Route exact path="/Carsharing" component={Carsharing} />
+
                 </Switch>
               </div>
               
