@@ -8,6 +8,7 @@ const sideDrawer = props => {
     drawerClasses = 'side-drawer open';
    }
    return (
+     
     <nav className={drawerClasses}>
       <img src={logo} style={{width: "25rem" , height:"10rem"}} />
       <ul class="ul">
@@ -16,7 +17,7 @@ const sideDrawer = props => {
       <a href="/">Home</a>
         </li>
         <li>
-          <a href="/Protocolos">Protocolos</a>
+          <a href="/Protocolo">Protocolos</a>
         </li>
         <li>
         <a href="/">Protocolos Navidad</a>
@@ -28,7 +29,7 @@ const sideDrawer = props => {
           <a href="/Perfil">Perfil</a>
         </li>
         <li>
-          <a href="/Mapa">Mapa</a>
+          <a href="/MapPage">Mapa</a>
         </li>
         <li>
           <a href="/MadridCentral">Madrid Central</a>

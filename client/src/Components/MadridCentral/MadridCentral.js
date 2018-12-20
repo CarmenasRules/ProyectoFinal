@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import Madridcentral from '../../img/madrid-central-logo-1440_1440x655c.png';
-import './MadridCentral.css'
+import './MadridCentral.css';
+import logo from "../../img/madrid-central-logo-1440_1440x655c.png";
+import logo2 from "../../img/Madrid-Central.png";
+import logo3 from "../../img/Plan-A.png";
+import logo4 from "../../img/pegatinadgt.png";
+import logo5 from "../../img/93ff93e185c24ff180fe4165502a3b16.png";
+import logo6 from "../../img/coche-corriendo-carretera_25819-26.png";
+import logo7 from "../../img/driving-downtown-vector-17019455 copia.jpg";
 
 export default class MadridCentral extends Component {
   render() {
@@ -19,8 +26,11 @@ export default class MadridCentral extends Component {
         {/* <div className="colors1">
         </div> */}
         </div>
+        <div className= "color1">
+        <div className="logoblanco">
+<img  src={logo} style={{width: "800px" , height:"300px"}} /> 
         <div className="info1">
-        <h2>¿Qué es?</h2>
+       <h2>¿Qué es?</h2>
 <p> Madrid Central es una zona de bajas
 emisiones que comenzara a Tuncionar el
 viernes 30 de noviembre de 2018. Esta
@@ -33,6 +43,11 @@ Gran Vía o Atocha. El distrito Centro se
 convertirá en un pulmón para la ciudad en
 pleno corazón de Madrid. </p>
 </div>
+</div>
+</div>
+<div className= "color2">
+<div className="logo">
+<img className="logodentro2" src={logo2} style={{width: "300px" , height:"300px"}} /> 
 <div className="info2">
 <h2>¿Cuál es el perímetro de Madrid
 Central?</h2>
@@ -50,7 +65,11 @@ Prado, Ronda de Atocha, Ronda de Toledo,
 Ronda de Segovia, Calle Bailén, Plaza de
 España y Calle Princesa.</p>
 </div>
-<div className="colors2">
+</div>
+</div>
+<div className="color3">
+<div className="logoblanco">
+<img className="logodentro3" src={logo5} style={{width: "600px" , height:"350px"}} /> 
 <div className="info3">
 <h2>¿Podré circular por Madrid Central?</h2>
 <p>Como norma general, en Madrid Central
@@ -64,6 +83,10 @@ Si no tienes distintivo ambiental, no
 podrás acceder a Madrid Central.</p>
 </div>
 </div>
+</div>
+<div className= "color4">
+<div className="logo2">
+<img  className="logodentro4" src={logo3} style={{width: "300px" , height:"250px"}} /> 
 <div className="info4">
 <h2>¿Y SI VIVO dentro de la zona de
 Madrid Central?</h2>
@@ -74,7 +97,11 @@ en su barrio como hasta ahora, pero
 a partir de 2025 necesitarán tener un
 distintivo ambiental.</p>
 </div>
-<div className="colors3">
+</div>
+</div>
+<div className="color5">
+<div className="logoblanco">
+<img className="logodentro5" src={logo7} style={{width: "600px" , height:"350px"}} /> 
 <div className="info5">
 <h2>¿Y si soy propietarios de una
 vivienda en Madrid Central y no estoy
@@ -93,6 +120,11 @@ vehículo hasta 2020 cuando no se
 les permitirá el acceso sin distintivo
 ambiental.</p>
 </div>
+</div>
+</div>
+<div className= "color6">
+<div className="logo2">
+<img  src={logo4} style={{width: "300px" , height:"200px"}} /> 
 <div className="info6">
 <h2> ¿Podré entrar con un vehículo
 sin etiqueta?</h2>
@@ -107,6 +139,11 @@ a aparcamientos de rotación situados
 dentro del área siempre que dispongan de
 distintivo medioambiental de la DGT.</p>
 </div>
+</div>
+</div>
+<div className= "color7">
+<div className="logoblanco">
+<img src={logo6} style={{width: "600px" , height:"350px"}} /> 
 <div className="info7">
 <h2>¿Puede venir a verme un familiar
 con su coche?</h2>
@@ -125,6 +162,7 @@ dientemente de su etiqueta ambiental
 A partir de 2025 solo se permitirá el
 acceso de vehículo sin etiqueta cuando
 sean adaptados.</p>
+</div>
 </div>
 </div>
       </div>

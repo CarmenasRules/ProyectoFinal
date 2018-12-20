@@ -11,6 +11,7 @@ export default class Home extends Component {
             <div>
         <div className="backgroundimg">
         <div className="textbackground">
+        <br></br><br></br><br></br><br></br>
         <h1>Pierde el miedo a moverte por Madrid!</h1>
         <h2>Piensa como Carmena, sé como Carmena.</h2>
         </div>

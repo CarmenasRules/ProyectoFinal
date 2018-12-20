@@ -12,6 +12,7 @@ import {
 } from "react-places-autocomplete";
 import Toggleinfo from './Toggleinfo'
 
+
 let arrayInfo = [];
 // let infoPollution = pollutions.data.data.iaqi.no2.v;
 
@@ -114,38 +115,31 @@ export default class Map extends Component {
   render() {
     console.log(this.state)
     return (
-      <div>
 
-      <div>
+      <div class="paginacompleta">
+<div className="inputs">
+      <div className="autocompleteinput">
           <Autocomplete updateCoordinates={this.updateCoordinates} type="origin" />
+
           <Autocomplete updateCoordinates={this.updateCoordinates} type="destination" />
-        </div>
-
-        <div id="mode-selector" class="controls">
-          <input
-            type="radio"
-            name="type"
-            id="changemode-walking"
-            checked="checked"
-          />
-          <label for="changemode-walking">Walking</label>
-
-          <input type="radio" name="type" id="changemode-transit" />
-          <label for="changemode-transit">Transit</label>
-
-          <input type="radio" name="type" id="changemode-driving" />
-          <label for="changemode-driving">Driving</label>
-        </div>
+          </div>
+</div>
+        <div> 
         <MapWithADirectionsRenderer 
         journeyOrigin={this.state.origin}
          journeyDestination={this.state.destination} 
          center={{lat:this.state.lat, lng: this.state.lng}} 
          pollution={this.state.pollutionInfo} 
          arrayInfo={this.state.arrayInfo} 
-         /> <Toggleinfo />
-        {/* center no me servirá y tengo q poner lo de start y end */}
-
+         /> 
+         <div className="toggleescdenario">
+         <Toggleinfo />
+         </div>
+        </div>
       </div>
+ 
+
+      
     );
   }
  }

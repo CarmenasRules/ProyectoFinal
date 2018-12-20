@@ -47,3 +47,35 @@ html, body {
   font-size: 13px;
   font-weight: 300;
 }
+.mapaa {
+margin-left:170px;
+margin-bottom: -300px;
+position: fixed;
+}
+.autocompleteinput {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin-top: 200px;
+  margin-left: 150px;
+}
+/* .autocompleteinput2 {
+  display: flex;
+  margin-top: 200px;
+  position:absolute;
+
+
+} */
+.toggleescdenario {
+margin-left: -750px;
+margin-top: 450px;
+
+
+}
+.inputs {
+  margin-left: 0px;
+}
+.paginacompleta {
+display: flex;
+flex-direction: row;
+}

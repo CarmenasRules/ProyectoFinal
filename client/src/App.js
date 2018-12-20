@@ -72,22 +72,22 @@ logout = () => {
     }
           const welcome = this.state.user ? (
             <div>
-              <p>Hola {this.state.user.username}</p>
+              {/* <p>Hola {this.state.user.username}</p>
               <button onClick={this.logout}>Logout</button>
               <Link to="/MapPage">Map</Link> -{" "}
               <Link to="/MadridCentral">Madrid Central</Link> -{" "}
               <Link to="/Protocolo">Protocolos</Link >-{" "}
               <Link to="/ProtocoloNavidad">ProtocoloNavidad</Link > -{" "}
               <Link to="/Perfil">Perfil</Link>
-              <Link to="/Toggleinfo">ToggleInfo</Link>
+              <Link to="/Toggleinfo">ToggleInfo</Link> */}
             </div>
           ) : (
             <div>
-              <p>No user</p>
+              {/* <p>No user</p>
               <Link to="/MapPage">Map</Link> -{" "}
               <Link to="/">Home</Link> - <Link to="/signup">Signup</Link> -{" "}
               <Link to="/login">Login</Link> -{" "}
-              <Link to="/ToggleInfo">ToggleInfo</Link> -{" "}
+              <Link to="/ToggleInfo">ToggleInfo</Link> -{" "} */}
             </div>
           );
 
