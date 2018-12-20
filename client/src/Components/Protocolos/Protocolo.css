@@ -1,3 +1,68 @@
 .tituloprotocolo {
 
 }
+.avisoscontaminacion {
+  margin-top: 150px;
+}
+.preaviso {
+  /* margin-left: 250px;
+  width: 900px; */
+  background-color: rgb(255, 254, 173);
+  margin-bottom: 50px;
+  margin-top:150px;
+}
+.aviso {
+  background-color: rgb(255, 224, 173);
+  margin-bottom: 50px;
+}
+.alerta {
+  background-color: rgb(255, 178, 173);
+  margin-bottom: 50px;
+  margin-top: 30px;
+  padding: 30px;
+}
+.Escenarios {
+  margin-top: 150px;
+}
+.Escenario1 {
+  /* margin-left: 250px;
+  width: 900px; */
+  background-color: rgb(173, 229, 255);
+  margin-bottom: 50px;
+  margin-top:150px;
+}
+.Escenario2 {
+  background-color: rgb(219, 255, 173);
+  margin-bottom: 50px;
+  margin-top:150px;
+}
+.Escenario3 {
+  background-color: rgb(255, 254, 173);
+  margin-bottom: 50px;
+  margin-top:150px;
+}
+.Escenario4 {
+  background-color: rgb(255, 178, 173);
+  margin-bottom: 50px;
+  margin-top:150px;
+}
+.Escenario5 {
+  background-color: rgb(236, 173, 255);
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+.actuacion1 {
+  background-color: rgba(134, 214, 252, 0.609);
+}
+.actuacion2 {
+  background-color: rgb(205, 253, 143);
+}
+.actuacion3 {
+  background-color: rgb(250, 248, 144);
+}
+.actuacion4 {
+  background-color: rgb(253, 157, 151);
+}
+.actuacion5 {
+  background-color: rgb(229, 151, 253);
+}

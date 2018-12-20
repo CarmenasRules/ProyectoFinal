@@ -9,11 +9,8 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-        <div className="backgroundimg">
+        <div className="backgroundimg2">
         <div className="textbackground">
-        <br></br><br></br><br></br><br></br>
-        <h1>Pierde el miedo a moverte por Madrid!</h1>
-        <h2>Piensa como Carmena, sé como Carmena.</h2>
         </div>
         </div>
        <div className="infogeneral">
