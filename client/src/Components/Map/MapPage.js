@@ -3,6 +3,7 @@ import axios from "axios";
 import MapWithADirectionsRenderer from './Map'
 import Autocomplete from "./autocomplete";
 import data from "../../parking.json";
+import pollutionData from '../../pollution.json';
 import './Map.css'
 import {
   geocodeByAddress,
@@ -20,9 +21,6 @@ let arrayInfo = [];
 
 
 export default class Map extends Component {
-  
-
-  
 
   constructor(props) {
     super(props);
@@ -30,41 +28,32 @@ export default class Map extends Component {
     
     this.state = {
       address: "",
-      lat: 40.392321599999995,
-      lng: -3.6985121999999997,
+      lat: 40.422363, 
+      lng: -3.675473,
       zoom: 13,
       start:{lat:"", lng:""},
       end:{lat:"", lng:""},
-      pollutionInfo:[],
+      pollutionInfo:[], 
       arrayInfo:[]
     };
   }
 
-
-
-
-  getPollution = city => {
-    return axios
-      .get(
-        `http://api.waqi.info/feed/${city}/?token=78c5fbbab6b2531e1aa2412418bd283e637270a3`
-      )
-      .then(pollutions => {
+  getPollution = (city) => {
+    let arrayPollution = pollutionData;
+  
+      arrayPollution.forEach(pollutions => {
         let pollutionPoint = {
           position: {
-            lat: pollutions.data.data.city.geo[0],
-            lng: pollutions.data.data.city.geo[1]
+            lat: pollutions.city.geo[0],
+            lng: pollutions.city.geo[1]
           },
-          name: pollutions.data.data.iaqi.no2.v
+          no2: pollutions.iaqi.no2.v
         };
         const _state = {...this.state}
         _state.pollutionInfo.push(pollutionPoint)
         this.setState(_state)
       });
   };
-
-
-
-
 
 
   getLocations = () => {
@@ -83,7 +72,6 @@ export default class Map extends Component {
         _state.arrayInfo.push(arrayData)
         this.setState(_state)
     });
-  
   };
 
 
@@ -113,7 +101,6 @@ export default class Map extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
 
       <div class="paginacompleta">

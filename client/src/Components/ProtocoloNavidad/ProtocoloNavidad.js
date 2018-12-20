@@ -1,46 +1,50 @@
+
 import React, { Component } from 'react';
-import ProtocoloNavidad from './ProtocoloNavidad.css';
+
+import './ProtocoloNavidad.css';
 
 
-export default class Protocolo extends Component {
+export default class ProtocoloNavidad extends Component {
   render() {
     return (
       <div>
-        
-        
-        <h1 class="tituloprotocolo"> Protocolos Navidad </h1>
 
+
+<div className="primero">
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h1 className="titulo1"> Protocolos de Navidad </h1>
+        </div>
+
+      <div className= "color1">
+      <div className="info1">
         <h2> ¿En qué consisten y cuándo se aplican las medidas especiales de tráfico en el Centro durante la Navidad?</h2>
-        <p>
-        En una serie de medidas de control y regulación de la circulación del tránsito peatonal y motorizado que se tiene previsto implantar de manera anticipada y programada entre el 23 de noviembre de 2018 y el 7 de enero de 2019 (ambos incluidos).
-         </p>
+        
 
         <p>
-        durante el periodo de vigencia de las 'Medidas de control y regulación de la circulación en Navidades, fin de año y Reyes', se contará con un dispositivo especial de Policía Municipal y Agentes de Movilidad que establecerán controles de saturación preventiva en los siguientes viales del Centro que podrán ser ampliados, modificados o reducidos en función de las necesidades de regulación que puedan apreciarse:
-
-
-<ul>
-  <li>Plaza de España.</li>
-  <li>Plaza de Cibeles.</li>
-  <li>Plaza de la Independencia.</li>
-  <li>Plaza de Cánovas del Castillo (Neptuno).</li>
-  <li>Glorieta del Emperador Carlos V.</li>
-  <li>Glorieta Puerta de Toledo.</li>
-  <li>Plaza de San Francisco el Grande.</li>
-  <li>Calle Mayor-calle Bailén.</li>
-  <li>Princesa-Alberto Aguilera.</li>
-  <li>Glorieta Ruíz Jiménez.</li>
-  <li>Plaza de Alonso Martínez.</li>
-  <li>Plaza de Colón.</li>
-</ul>
-
-En caso de ser necesario a fin de evitar situaciones de congestión del tráfico en los viales del Centro, los agentes de la autoridad allí personados podrán proceder a realizar cortes y/o desvíos para el tráfico en general, permitiéndose sólo el paso al transporte público, residentes, acceso a aparcamientos públicos y privados, y a aquellos vehículos que realicen labores de carga y descarga en horario singular.
-
-De igual modo, en su condición de agentes de la autoridad, podrán permitir el paso a aquellos vehículos que a su criterio puedan o deban acceder por razones de interés general o necesidad urgente inaplazable.
+        Consisten en una serie de medidas de control y regulación de la 
+        circulación del tránsito peatonal y motorizado que se tiene previsto 
+        implantar de manera anticipada y programada entre el 23 de noviembre 
+        de 2018 y el 7 de enero de 2019 (ambos incluidos).
         </p>
+    
+      <br></br>
+      </div>
+     </div>
 
-        <h2>Principales medidas de control y regulación del tráfico en Navidades</h2>
-        <ul>
+
+     <div className= "color2">
+    <div className="info2">
+    <br></br>
+    <h2>Principales medidas de control y regulación del tráfico en Navidades</h2>
+
+    <br></br>
+      <ul>
 
           <li>Controles de saturación preventiva de agentes de movilidad y policía municipal en 12 emplazamientos.</li>
           <li>Corte de tráfico de las calles Aduana y Jardines (salvo residentes y servicios) desde las 11 y hasta las 23 horas. </li>
@@ -52,11 +56,13 @@ De igual modo, en su condición de agentes de la autoridad, podrán permitir el 
           <li>Más información: www.madrid.es/movinavidad2018.</li>
           
         </ul>
-        
-        
-     
+    </div>
+    </div>
+
+
      
       </div>
     )
   }
 }
+
