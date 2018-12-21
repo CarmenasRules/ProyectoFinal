@@ -28,6 +28,7 @@
     "react-native-maps-directions": "^1.6.0",
     "react-parallax": "^2.0.1",
     "react-parallax-3d": "^0.1.2",
+    "react-pdf": "^4.0.0",
     "react-places-autocomplete": "^7.2.0",
     "react-pose": "^4.0.4",
     "react-router-dom": "^4.3.1",

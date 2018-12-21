@@ -63,7 +63,7 @@ class Toggleinfo extends Component {
       'font-weight-light h2 mb-0 pl-4',
       enabled ? 'text-dark' : 'text-secondary'
     );
-      const pepe = 299;
+      const pepe = 250;
     return (
       <div className="App position-absolute text-left d-flex justify-content-center align-items-start pt-5 h-100 w-100">
         <div className="d-flex flex-wrap mt-5" style={{width: 350}}>

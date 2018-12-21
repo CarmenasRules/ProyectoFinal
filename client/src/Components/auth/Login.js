@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
 import './login.css'
-import logo from '../../img/electricar2.jpg'
+import logo from '../../img/mattia-righetti-350134-unsplash.jpg'
 export default class Login extends Component {
   constructor() {
     super();
@@ -31,19 +31,20 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div class="login">
-      {/* <img src={logo} /> */}
-        <h2>Login</h2>
-        <form onSubmit={this.handleFormSubmit}>
-          <label class="username">Nombre de usuario  </label>
-          <input type="text" name="username" onChange={e => this.handleChange(e)} />
-<br></br>
-<br></br>
-          <label>Contraseña  </label>
-          <input type="password" name="password" onChange={e => this.handleChange(e)} />
-
-          <input type="submit" value="Login"/>
-        </form>
+      <div className="login">
+        <div className="usuario">
+          <h2>Login</h2>
+          <form className="usuario-form" onSubmit={this.handleFormSubmit}>
+            <label className="labelname">Nombre de usuario  </label>
+            <input placeholder="Usuario..." type="text" name="username" onChange={e => this.handleChange(e)} />
+            <br></br><br></br>
+            <label className="labelpass">Contraseña  </label>
+            <input placeholder="Contraseña..." type="password" name="password" onChange={e => this.handleChange(e)} />
+            <br></br><br></br>
+            <input className="botonlogin" type="submit" value="Login" style={{marginTop: '20px'}}/>
+          </form>
+        </div>
+          <img  className="imagencoche" src={logo} alt='coche'/> 
       </div>
     )
   }

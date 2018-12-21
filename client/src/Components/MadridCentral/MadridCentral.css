@@ -8,8 +8,8 @@
   justify-content: center;
  
 }
-.primero {
-  background-color: #7ba4cf;
+.primero1 {
+  background-color: lightgray;
   height: 400px;
 }
  .color1 {
@@ -19,7 +19,7 @@
 .color2 {
   padding-top: 100px;
   padding-bottom: 5px;
-  background-color: #DEE4F0;
+  background-color: rgb(187, 192, 202);
 }
 .color3 {
 margin-top: 100px;
