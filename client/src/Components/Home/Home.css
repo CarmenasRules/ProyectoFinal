@@ -1,6 +1,8 @@
 
 
 .fotitocoche {
+  border-radius:20px;
+  box-shadow: 300px;
 }
 .titulo{
 margin-top: 300px;

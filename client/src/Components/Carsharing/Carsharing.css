@@ -17,25 +17,35 @@
   color:green;
   
 }
- .color1 {
+ .color1Car {
   margin-top: 100px;
   margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
 }
-.color2 {
+.color2Car {
   padding-top: 100px;
   padding-bottom: 5px;
+  display: flex;
   background-color: #DEE4F0;
+  justify-content: center;
+
 }
 .color3 {
-margin-top: 100px;
+  display: flex;
+  
+  justify-content: center;
     } 
 .color4 {
   padding-top: 100px;
   padding-bottom: 1px;
   background-color: #DEE4F0;
 }
-.color5 {
+.color5Car {
   margin-top: 100px;
+  display: flex;
+  
+  justify-content: center;
 }
 .color6 {
   padding-top: 100px;
@@ -62,26 +72,26 @@ margin-top: 100px;
 }
 
 
-.info1 {
-  /* margin-top: 50px;
+.info1Car {
+  margin-top: 50px;
   margin-left: 20px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   width: 800px;
   padding: 10px;
-  line-height: 2.5 */
+  line-height: 2.5 
 }
-.info2 {
-  /* margin-left: 20px;
+.info2Car {
+  margin-left: 20px;
   right: 350px;
   width: 800px;
   padding: 10px;
   line-height: 2.5;
-  margin-bottom: 100px; */
+  margin-bottom: 100px; 
 
 }
-.info3 {
+.info3Car {
   /* margin-left: 20px;
   right: 350px;
   width: 800px;
@@ -97,13 +107,13 @@ margin-top: 100px;
   line-height: 2.5;
   margin-bottom: 100px; */
 }
-.info5 {
-  /* margin-left: 20px;
+.info5Car {
+  margin-left: 20px;
   right: 350px;
   width: 800px;
   padding: 10px;
   line-height: 2.5;
-  margin-bottom: 100px; */
+  margin-bottom: 100px;
 }
 .info6 {
   margin-left: 20px;

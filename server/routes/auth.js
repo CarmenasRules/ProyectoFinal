@@ -22,10 +22,12 @@ authRoutes.post("/login", function(req, res, next) {
 });
 
 
-authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {
+authRoutes.post("/signup", uploadCload.single("photo"), (req, res, next) => {  //////////////////
   const { username, password, email, coche, check} = req.body;  ///////()
-  console.log(req.body, '------------', req.file)
-  const pictureUrl = req.file? req.file.url: "";
+  // console.log(req.body, '------------', req.file)
+  const pictureUrl = req.file;
+
+  console.log("fotoooo",pictureUrl) /////////////////
 
   
   if (username === "" || password === "") {

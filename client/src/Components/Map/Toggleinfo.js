@@ -63,7 +63,7 @@ class Toggleinfo extends Component {
       'font-weight-light h2 mb-0 pl-4',
       enabled ? 'text-dark' : 'text-secondary'
     );
-      const pepe = 180;
+      const pepe = 299;
     return (
       <div className="App position-absolute text-left d-flex justify-content-center align-items-start pt-5 h-100 w-100">
         <div className="d-flex flex-wrap mt-5" style={{width: 350}}>
@@ -106,20 +106,22 @@ class Toggleinfo extends Component {
                     Reducción de la velocidad a <b>70km/h</b> en la <b>M-30</b> y <b>accesos</b>.</h1>
                    }
                    { pepe >= 241 && pepe <= 299  &&
-                      <h1>Escenario 2
+                     <h1><br></br>
                      Se han superado durante dos días consecutivos los 180 microgramos/m3 o se han superado durante un dia los 200microgramos/m3.
-                    Actuaciones: 
-                    Reducción de la velocidad a <b>70km/h</b> en la <b>M-30</b> y <b>accesos</b>
-                    <b>Prohibido estacionar</b> en la <b>zona SER</b> salvo los vehículos con etiqueta CERO y ECO.
-                    <b>Prohibición de circular</b> a los vehículos <b>sin etiqueta ambiental</b> de la DGT, incluidas las <b>motocicletas</b>, en la <b>almendra central</b> y en la <b>M-30</b> de 6:30 a 22:00. </h1>
+                     <br></br><br></br><br></br>
+                    <b>Actuaciones</b>
+                    <br></br><br></br>
+                    Reducción de la velocidad a <b>70km/h</b> en la <b>M-30</b> y <b>accesos</b>.
+                    <b> Prohibido estacionar</b> en la <b>zona SER</b> salvo los vehículos con etiqueta CERO y ECO.
+                    <b> Prohibición de circular</b> a los vehículos <b>sin etiqueta ambiental</b> de la DGT, incluidas las <b>motocicletas</b>, en la <b>almendra central</b> y en la <b>M-30</b> de 6:30 a 22:00. </h1>
                     }
                   {pepe >= 300 && pepe <= 349  &&    
                        <h1>Escenario 3
                     Se han superado durante tres días consecutivos los 180 microgramos/m3 o se han superado durante dos días los 200microgramos/m3.
                     Actuaciones: 
                     <b>Limitación</b> de velocidad a <b>70km/h</b>
-                    <b>Prohibido estacionar</b> en la <b>zona SER</b> salvo los vehículos con etiqueta CERO y ECO.
-                    <b>Prohibición de circular</b> a los vehículos <b>sin etiqueta ambiental</b> de la DGT, incluidas las <b>motocicletas</b>, en <b>toda</b> la ciudad.</h1>
+                    <b>Prohibido estacionar</b> en la <b>zona SER</b> salvo los vehículos con etiqueta CERO y ECO. 
+                    <b> Prohibición de circular</b> a los vehículos <b>sin etiqueta ambiental</b> de la DGT, incluidas las <b>motocicletas</b>, en <b>toda</b> la ciudad.</h1>
                     }
                   {pepe >= 350 && pepe <= 399  &&  
                          <h1>Escenario 4

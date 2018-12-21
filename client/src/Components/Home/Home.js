@@ -15,12 +15,13 @@ export default class Home extends Component {
         </div>
        <div className="infogeneral">
         <div style={{ margin: "1.5rem 0 0 2.5rem"}} >
-        <img  className="fotitocoche" src={logo} style={{width: "37rem" , height:"20rem"}} />
+        {/* <img  className="fotitocoche" src={logo} style={{width: “37rem” , height:“20rem”}} /> */}
     </div>
     <div className="informationp">
-        <h1 className="quienesomos">¿Quiénes somos?</h1>
-        <p>Somos un par de programadores que hemos desarrollado una app para poder viajar por Madrid sin miedo a la restricciones por la  contaminación. Esto lo logramos gracias a un registro en el que indicará su pegatina de contaminación y en base a esto podrá saber si entrar a la almendra central de Madrid o no dependiendo de el nivel de contaminación que también podrá revisar. </p>
-        <button className="buttonmasinfo">Más Información</button>
+        <h1 className="quienesomos">Conoce cuáles son las normas para moverse por Madrid cuando está activado el protocolo anticontaminación,</h1>
+        <h1>por dónde circular y aparcar en la ciudad</h1>
+        
+       
     </div>
 
     </div>
@@ -40,15 +41,15 @@ export default class Home extends Component {
     </div>
     <div>
     <h1>Rutas</h1>
-    <p>Rutas simples e intuitivas, para viajar teniendo en cuenta las prohibiciones por contaminación.</p>
+    <p>Planifica tu ruta de manera simple e intuitiva, para viajar teniendo en cuenta las prohibiciones por alta contaminación.</p>
     </div>
     <div>
-    <h1>Elige tu medio de transporte</h1>
-    <p>Puedes elegir entre ir en coche, a pie o en transporte público.</p>
+    <h1>Parkings</h1>
+    <p>Elige de antemano en qué parking puedes dejar el coche antes de emprender tu viaje al centro de la ciudad.</p>
     </div>
     <div>
     <h1>Contaminación</h1>
-    <p>Ayuda a reducir la contaminación y ya de paso, ¡ahórrate una multa!.</p>
+    <p>Te ayudamos a que planifiques tu viaje para contribuir entre todos a reducir la contaminación.</p>
     </div>
     </div>
     </div>

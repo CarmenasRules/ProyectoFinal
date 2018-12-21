@@ -147,10 +147,10 @@ const MapWithADirectionsRenderer = compose(
       icon = azul;
       } 
         else if (180< props.pollution[0].no2 < 240) {
-      icon = amarillo;
+      icon = naranja;
       }   
       else if (241< props.pollution[0].no2 < 299) {
-        icon = naranja ;
+        icon = amarillo ;
         } 
         else if (300< props.pollution[0].no2 < 349) {
         icon = rojoClaro;

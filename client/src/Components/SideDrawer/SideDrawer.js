@@ -27,10 +27,10 @@ const sideDrawer = props => {
         <a href="/MadridCentral">Madrid Central</a>
         </li>
         <li>
-        <a href="/">Carsharing</a>    
+        <a href="/Carsharing">Carsharing</a>    
         </li>
         <li>
-        <a href="/">Protocolos Navidad</a>
+        <a href="/ProtocoloNavidad">Protocolos Navidad</a>
         </li>
         <li>
           <a href="/Perfil">Perfil</a>

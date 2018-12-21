@@ -8,9 +8,12 @@
   justify-content: center;
  
 }
-.primero {
-  background-color: #7ba4cf;
+.primeroNav {
+  /* background-color:lightgray; */
   height: 400px;
+  background-image: url("../../img/fondoNavidad.jpg");
+  background-size:100% 120%;
+  color: white;
 }
  .color1 {
   margin-top: 100px;
@@ -40,11 +43,20 @@ margin-top: 100px;
 .color7 {
   margin-top: 100px;
 }
-.info {  
+.colorProtocoloNavidad{
+  background-color:lightgray;
+
+  
 }
+
+
 
 li{list-style-type: none;
 }
+
+/* .listaMedidasNavidad{
+  width: 1000px;
+} */
 .info1 {
   /* margin-top: 50px;
   margin-left: 20px;
