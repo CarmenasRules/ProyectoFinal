@@ -6,7 +6,7 @@ export default class Protocolo extends Component {
   render() {
     return (
       <div>
-         <div className="primero">
+         <div className="primero2">
         <br></br>
         <br></br>
         <br></br>
@@ -15,6 +15,12 @@ export default class Protocolo extends Component {
         <br></br>
         <br></br>
         <h1 class="tituloprotocolo"> Protocolos </h1>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         </div>
         <h1 className="avisoscontaminacion">AVISOS DE CONTAMINACIÓN</h1>
         <div className="preaviso">

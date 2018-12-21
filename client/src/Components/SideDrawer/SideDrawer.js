@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../img/fotomenu.jpg';
+import logo from '../../img/imagenmenu.jpg';
 import './SideDrawer.css';
 
 

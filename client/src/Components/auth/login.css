@@ -1,11 +1,12 @@
 .login {
 color: white;
  border: 1px solid rgb(177, 177, 177); 
- background-color: #184f88;
- width: 500px;
- height: 300px;
+ background-color: black;
+ width: 600px;
+ height: 500px;
  margin-left: 480px;
  margin-top: 150px;
+ border-radius: 20px;
 }
 
 h2 {
@@ -14,4 +15,12 @@ h2 {
 
 .username {
   margin-top: 100px;
+}
+.usuario {
+  display: flex;
+  flex-direction: column;
+}
+.imagencoche {
+  margin-left: 300px;
+  border-radius: 50%;
 }

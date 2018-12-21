@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from './AuthService';
 import './login.css'
-import logo from '../../img/electricar2.jpg'
+import logo from '../../img/mattia-righetti-350134-unsplash.jpg'
 export default class Login extends Component {
   constructor() {
     super();
@@ -32,18 +32,23 @@ export default class Login extends Component {
   render() {
     return (
       <div class="login">
-      {/* <img src={logo} /> */}
+      <div className="imagencoche">
+      <img src={logo} style={{width: "290px" , height:"490px"}}/> 
+      </div>
+
+      <div className="usuario">
         <h2>Login</h2>
         <form onSubmit={this.handleFormSubmit}>
           <label class="username">Nombre de usuario  </label>
           <input type="text" name="username" onChange={e => this.handleChange(e)} />
+        </form>
+      </div>
 <br></br>
 <br></br>
           <label>Contraseña  </label>
           <input type="password" name="password" onChange={e => this.handleChange(e)} />
 
           <input type="submit" value="Login"/>
-        </form>
       </div>
     )
   }
