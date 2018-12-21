@@ -15,7 +15,7 @@ export default class Home extends Component {
         </div>
        <div className="infogeneral">
         <div style={{ margin: "1.5rem 0 0 2.5rem"}} >
-        {/* <img  className="fotitocoche" src={logo} style={{width: “37rem” , height:“20rem”}} /> */}
+        <img  className="fotitocoche" src={logo} style={{width: "32rem" , height:"16rem"}} />
     </div>
     <div className="informationp">
         <h1 className="quienesomos">Conoce cuáles son las normas para moverse por Madrid cuando está activado el protocolo anticontaminación,</h1>
@@ -26,7 +26,7 @@ export default class Home extends Component {
 
     </div>
     <div className="servicios">
-    <h1>Nuestros servicios</h1>
+    <h1>NUESTROS SERVICIOS</h1>
     </div>
     <div className="iconos">
     <img className="icono1"  src={iconoposicion} style={{width: "10rem" , height:"10rem"}} />
@@ -36,19 +36,19 @@ export default class Home extends Component {
     </div>
     <div className="texto"> 
     <div>
-    <h1>Ubicaciones</h1>
+    <h2>Ubicaciones</h2>
     <p>Utilizamos las ubicaciones de Google Maps para ofrecerte una mejor experiencia.</p>
     </div>
     <div>
-    <h1>Rutas</h1>
+    <h2>Rutas</h2>
     <p>Planifica tu ruta de manera simple e intuitiva, para viajar teniendo en cuenta las prohibiciones por alta contaminación.</p>
     </div>
     <div>
-    <h1>Parkings</h1>
+    <h2>Parkings</h2>
     <p>Elige de antemano en qué parking puedes dejar el coche antes de emprender tu viaje al centro de la ciudad.</p>
     </div>
     <div>
-    <h1>Contaminación</h1>
+    <h2>Contaminación</h2>
     <p>Te ayudamos a que planifiques tu viaje para contribuir entre todos a reducir la contaminación.</p>
     </div>
     </div>

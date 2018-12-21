@@ -8,8 +8,6 @@ import logo4 from "../../img/pegatinadgt.png";
 import logo5 from "../../img/93ff93e185c24ff180fe4165502a3b16.png";
 import logo6 from "../../img/coche-corriendo-carretera_25819-26.png";
 import logo7 from "../../img/driving-downtown-vector-17019455 copia.jpg";
-import { Document, Page } from 'react-pdf';
-import contaminacion from '../../img/protocolo_anticontaminacion_madrid_08102018.pdf'
 
 
 export default class MadridCentral extends Component {
@@ -176,15 +174,7 @@ sean adaptados.</p>
 </div>
 </div>
 </div>
-<div>
-        <Document
-          file={contaminacion}
-          onLoadSuccess={this.onDocumentLoadSuccess}
-        >
-          <Page pageNumber={pageNumber} />
-        </Document>
-        <p>Page {pageNumber} of {numPages}</p>
-      </div>
+
       </div>
     )
   }
