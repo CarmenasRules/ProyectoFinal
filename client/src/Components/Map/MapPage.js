@@ -104,13 +104,11 @@ export default class Map extends Component {
     return (
 
       <div class="paginacompleta">
-<div className="inputs">
       <div className="autocompleteinput">
           <Autocomplete updateCoordinates={this.updateCoordinates} type="origin" />
 
           <Autocomplete updateCoordinates={this.updateCoordinates} type="destination" />
           </div>
-</div>
         <div> 
         <MapWithADirectionsRenderer 
         journeyOrigin={this.state.origin}

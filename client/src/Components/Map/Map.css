@@ -55,7 +55,8 @@ position: fixed;
 .autocompleteinput {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
+  align-items: space-between;
+  justify-content: center;
   margin-top: 200px;
   margin-left: 150px;
 }
@@ -74,6 +75,8 @@ margin-top: 450px;
 }
 .inputs {
   margin-left: 0px;
+  display: flex;
+  justify-content: center;
 }
 .paginacompleta {
 display: flex;

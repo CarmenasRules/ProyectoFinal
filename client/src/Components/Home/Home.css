@@ -1,6 +1,8 @@
 
 
 .fotitocoche {
+  border-radius: 20px;
+  box-shadow: 300px;
 }
 .titulo{
 margin-top: 300px;
@@ -27,7 +29,10 @@ display: flex;
   justify-content: flex-start;
   width: 7rem;
   height: 3rem;
-  border-radius: 20%;
+  border-radius: 20px;
+  color: black;
+  background-color: lightgray;
+  border: 1px solid black;
 }
 .buttonmasinfo a:active{
   color: gray;

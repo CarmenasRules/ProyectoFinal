@@ -16,7 +16,7 @@ const sideDrawer = props => {
      
     <nav className={drawerClasses}>
       <img src={logo} style={{width: "25rem" , height:"10rem"}} />
-      <ul class="ul">
+      <ul className="ul">
         <li>
           <a href="/MapPage">Mapa</a>
         </li>

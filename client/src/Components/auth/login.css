@@ -4,23 +4,39 @@ color: white;
  background-color: black;
  width: 600px;
  height: 500px;
- margin-left: 480px;
+ margin-left: 450px;
  margin-top: 150px;
  border-radius: 20px;
+ overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
 
 h2 {
   margin-top: 50px;
 }
 
-.username {
-  margin-top: 100px;
-}
 .usuario {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  margin: 50px;
 }
+
+.usuario-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .imagencoche {
-  margin-left: 300px;
-  border-radius: 50%;
+  width: 50%;
+  height: 100%;
+}
+.botonlogin {
+  border-radius: 10px;
+  color: white;
+  background-color: black;
+}
+.labelname {
+  border-radius: 50px;
 }
