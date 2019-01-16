@@ -12,5 +12,5 @@ You can also use the Google Maps routes to plan your trip.
  http://carmenasrules.herokuapp.com/
  
  ## Notes about the code
-I am very proud of this code because my colleague Adrián Gómez and I worked very hard to achieve what we had set out to do. This project was a challenge for us. We always knew what we wanted to do but we did not know how to do some things. Still, we decided to continue. We learned a lot in this project, we managed to do what we had thought at first, and most importantly, we grew as web programmers. Of course, I want to thank my colleague Adrián Gómez.
+We are very proud of this code because we worked very hard to achieve what we had set out to do. This project was a challenge for us. We always knew what we wanted to do but we did not know how to do some things. Still, we decided to continue. We learned a lot in this project, we managed to do what we had thought at first, and most importantly, we grew as web programmers.
 
